@@ -43,10 +43,10 @@ namespace Primeval.Item
             PlayerCharacter.PlayerCharacter p = PlayerCharacter.PlayerCharacter.myPlayer;
             if (aidData.itemName == "Medkit")
             {
-                p.vitalityModule.HealHitPoints(aidData.effectAmount);
+                p.vitalityModule.HealHitPoints(aidData.effectRate);
             }else if (aidData.itemName == "Armor Charge")
             {
-                p.vitalityModule.HealArmorPoints(aidData.effectAmount);
+                p.vitalityModule.HealArmorPoints(aidData.effectRate);
             }
         }
     }
