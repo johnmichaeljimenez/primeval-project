@@ -1,0 +1,75 @@
+*transform sync
+*property sync
+-server ownership
+-scene objects
+?room properties
+?time
+-events
+
+
+
+-position
+-rotation
+-look position
+-
+
+
+
+*sync inventory bug
+*multiple weapons ammo bug
+
+
+?item dropping
+*inventory item click
+*equip item
+*item fps view
+*weight count
+*fuel count
+*weapon view
+*sync inventory
+*ammo system
+*weight system
+-item dropping
+
+
+*hitpoints
+*armor
+-healing
+-buffs
+*weapon damage
+-respawn
+
+-cycle manager
+-lobby manager
+-deployment
+
+
+
+
+
+
+>account
+-id
+-username
+-password
+-email
+-join date
+-verified
+
+>match
+-id
+-winner
+
+
+>kills
+-id
+-killer
+-weapon
+-match id
+
+>gathers
+-id
+-match id
+-user id
+-gathered fuel
+-used fuel

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d63a8e1349f87419e5664fad01b835, type: 3}
+  m_Name: LooterHatchet
+  m_EditorClassIdentifier: 
+  itemName: Looter's Hatchet
+  itemDescription: Melee weapon that inflicts small damage but capable of tearing
+    down fuel cells from opponents.
+  iconSprite: {fileID: 0}
+  weight: 12
+  amount: 1
+  canBeEquipped: 1
+  defaultKeyCode: 50
+  stackable: 0
+  itemType: 1
+  usageType: 0
+  damage: 10
+  weaponType: 0
+  firingType: 0
+  ammo1Capacity: 0
+  ammo2Capacity: 0
+  ammunitionType: {fileID: 0}

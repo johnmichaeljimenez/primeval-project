@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dde1bfbe64293b45bdc5bdc9fc75189, type: 3}
+  m_Name: ArmorCharge
+  m_EditorClassIdentifier: 
+  itemName: Armor Charge
+  itemDescription: Replenishes a small amount of armor over time.
+  iconSprite: {fileID: 0}
+  weight: 4
+  amount: 1
+  canBeEquipped: 0
+  defaultKeyCode: 0
+  maxStackAmount: 5
+  itemType: 2
+  usageType: 1
+  effectAmount: 20
+  effectDuration: 1
