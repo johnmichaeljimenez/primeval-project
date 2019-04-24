@@ -44,15 +44,29 @@ namespace Primeval.Item
         public LayerMask bulletRaycastMask;
         RaycastHit hitInfo;
 
+        PlayerCharacter.PlayerCharacter myPlayer;
+        bool running, grounded, moving;
+        float t;
+
         public virtual void OnEnable()
         {
             interrupt = null;
             itemFPSModel = GetComponentInParent<ItemFPSModel>();
 
             SetState(WeaponStates.Ready);
+            myPlayer = PlayerCharacter.PlayerCharacter.myPlayer;
         }
         public virtual void Update()
         {
+            if (myPlayer)
+            {
+                running = myPlayer.movementModule.isRunning && myPlayer.movementModule.runDelay >= 0.8f;
+                grounded = myPlayer.movementModule.isGrounded;
+                moving = myPlayer.movementModule.inputDirection.sqrMagnitude > 0;
+
+                t = aiming? -1 : (!grounded ? 0 : running && moving ? 2 : moving ? 1 : 0);
+            }
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 int rs = itemFPSModel.referenceInventoryItem.GetReservedAmmo();
@@ -60,13 +74,13 @@ namespace Primeval.Item
                     SetState(WeaponStates.Reload);
             }
 
-            if (InputSystem.mouseLeftHold)
+            if (InputSystem.mouseLeftHold && !running)
             {
                 if (refItem.currentAmmo > 0)
                     SetState(WeaponStates.Fire);
             }
 
-            if (weaponData.canAim)
+            if (weaponData.canAim && !running)
             {
                 aiming = InputSystem.mouseRightHold && weaponAnimator.GetInteger("state") == (int)WeaponStates.Idle;
             }
@@ -76,18 +90,6 @@ namespace Primeval.Item
 
         public void CalculateMovementBlend()
         {
-            float t = 0;
-            PlayerCharacter.PlayerCharacter p = PlayerCharacter.PlayerCharacter.myPlayer;
-            if (p)
-            {
-                bool running, grounded, moving;
-                running = p.movementModule.isRunning;
-                grounded = p.movementModule.isGrounded;
-                moving = p.movementModule.inputDirection.sqrMagnitude > 0;
-
-                t = aiming? -1 : (!grounded ? 0 : running && moving ? 2 : moving ? 1 : 0);
-            }
-
             movementBlend = Mathf.Lerp(movementBlend, t, Time.deltaTime * (aiming? 30 : 5));
 
             weaponAnimator.SetFloat("movement", movementBlend);

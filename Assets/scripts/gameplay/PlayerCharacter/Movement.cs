@@ -28,12 +28,13 @@ namespace Primeval.PlayerCharacter
         [HideInInspector]
         public bool isGrounded;
         [HideInInspector]
-        public bool canJump;
         float hitDistance;
         float hitDistance_ceiling;
         float previousYPosition;
         float sourceHeight;
         bool getSourceHeight;
+
+        public float runDelay { get; private set; }
 
         RaycastHit hitInfo_floor;
         RaycastHit hitInfo_ceiling;
@@ -72,9 +73,21 @@ namespace Primeval.PlayerCharacter
 
                 Vector3 speed = new Vector3(baseMovementSpeed.side, 0, movementDirection.z > 0 ? baseMovementSpeed.forward : baseMovementSpeed.back);
                 if (playerCharacter.stanceModule.isCrouching)
+                {
+                    runDelay = 0;
                     speed.Scale(new Vector3(crouchMultiplier.side, 0, movementDirection.z > 0 ? crouchMultiplier.forward : crouchMultiplier.back));
+                }
                 else if (isRunning)
-                    speed.Scale(new Vector3(runMultiplier.side, 0, movementDirection.z > 0 ? runMultiplier.forward : runMultiplier.back));
+                {
+                    runDelay = Mathf.Min(runDelay + Time.deltaTime, 1);
+                    Vector3 runScale = new Vector3(runMultiplier.side, 0, movementDirection.z > 0 ? runMultiplier.forward : runMultiplier.back);
+
+                    speed.Scale(Vector3.Lerp(Vector3.one, runScale, runDelay));
+                }
+                else
+                {
+                    runDelay = 0;
+                }
                 movementDirection.Scale(speed);
                 movementDirection = playerCharacter.transform.TransformDirection(movementDirection);
 
@@ -85,6 +98,7 @@ namespace Primeval.PlayerCharacter
             }
             else
             {
+                runDelay = 0;
                 inputDirection = Vector2.zero;
                 y -= Time.deltaTime * gravity;
 

@@ -2422,40 +2422,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7348022160930653405, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: normalFov
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348022160930653405, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: runningFov
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348022160930653405, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: aimingFov
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348022161104166079, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: field of view
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348022159945961515, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348022159932279629, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348022159932279629, guid: 28597c3caa1b42446ad0548d63061eb6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28597c3caa1b42446ad0548d63061eb6, type: 3}
