@@ -12,6 +12,7 @@ namespace Primeval.Data
         public float spread = 3;
         public WeaponTypes weaponType;
         public FiringTypes firingType;
+        public bool canAim;
 
         [Header("Ammunition")]
         public int ammo1Capacity;

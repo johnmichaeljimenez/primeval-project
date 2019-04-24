@@ -18,7 +18,7 @@ MonoBehaviour:
   weight: 4
   amount: 1
   canBeEquipped: 0
-  defaultKeyCode: 0
+  defaultKeyBinding: 51
   maxStackAmount: 5
   itemType: 2
   usageType: 1

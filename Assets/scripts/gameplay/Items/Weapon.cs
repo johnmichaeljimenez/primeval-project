@@ -23,6 +23,8 @@ namespace Primeval.Item
         public Transform firingEffect;
         float movementBlend = 0;
 
+        public bool aiming { get; private set; }
+
         InventoryItem refItem
         {
             get
@@ -64,6 +66,11 @@ namespace Primeval.Item
                     SetState(WeaponStates.Fire);
             }
 
+            if (weaponData.canAim)
+            {
+                aiming = InputSystem.mouseRightHold && weaponAnimator.GetInteger("state") == (int)WeaponStates.Idle;
+            }
+
             CalculateMovementBlend();
         }
 
@@ -78,10 +85,10 @@ namespace Primeval.Item
                 grounded = p.movementModule.isGrounded;
                 moving = p.movementModule.inputDirection.sqrMagnitude > 0;
 
-                t = (!grounded ? 0 : running && moving ? 2 : moving ? 1 : 0);
+                t = aiming? -1 : (!grounded ? 0 : running && moving ? 2 : moving ? 1 : 0);
             }
 
-            movementBlend = Mathf.Lerp(movementBlend, t, Time.deltaTime * 5);
+            movementBlend = Mathf.Lerp(movementBlend, t, Time.deltaTime * (aiming? 30 : 5));
 
             weaponAnimator.SetFloat("movement", movementBlend);
         }
@@ -121,7 +128,7 @@ namespace Primeval.Item
                 Vector3 r1, r2, acc;
                 acc = Random.insideUnitCircle * weaponData.spread * 2;
                 r1 = CameraManager.instance.mainCamera.transform.position;
-                r2 = r1+(CameraManager.instance.mainCamera.transform.forward*1000);
+                r2 = r1 + (CameraManager.instance.mainCamera.transform.forward * 1000);
                 r2 += acc;
 
                 if (Physics.Linecast(r1, r2, out hitInfo, bulletRaycastMask))

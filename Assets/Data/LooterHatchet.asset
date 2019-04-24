@@ -19,13 +19,15 @@ MonoBehaviour:
   weight: 12
   amount: 1
   canBeEquipped: 1
-  defaultKeyCode: 50
-  stackable: 0
+  defaultKeyBinding: 50
+  maxStackAmount: 1
   itemType: 1
   usageType: 0
   damage: 10
+  spread: 3
   weaponType: 0
   firingType: 0
+  canAim: 0
   ammo1Capacity: 0
   ammo2Capacity: 0
   ammunitionType: {fileID: 0}

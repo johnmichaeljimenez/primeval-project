@@ -19,7 +19,7 @@ MonoBehaviour:
   weight: 20
   amount: 1
   canBeEquipped: 1
-  defaultKeyCode: 49
+  defaultKeyBinding: 49
   maxStackAmount: 1
   itemType: 1
   usageType: 0
@@ -27,6 +27,7 @@ MonoBehaviour:
   spread: 10
   weaponType: 1
   firingType: 1
+  canAim: 1
   ammo1Capacity: 30
   ammo2Capacity: 120
   ammunitionType: {fileID: 11400000, guid: 803114423d1b8814f96bda31d88ac4fe, type: 2}

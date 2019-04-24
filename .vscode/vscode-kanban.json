@@ -27,6 +27,15 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
+      "creation_time": "2019-04-24T11:04:40.437Z",
+      "id": "6",
+      "references": [],
+      "title": "Item Key Bindings"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
       "creation_time": "2019-04-23T18:54:38.313Z",
       "description": {
         "content": "*inventory item click\n*equip item\n*item fps view\n*weight count\n*fuel count\n*weapon view\n*sync inventory\n*ammo system\n*weight system\n*hitpoints\n*armor\n*weapon damage\n*healing\n*buffs",
@@ -35,18 +44,19 @@
       "id": "1",
       "references": [],
       "title": "Migrated"
-    },
+    }
+  ],
+  "in-progress": [
     {
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-24T11:04:40.437Z",
-      "id": "6",
+      "creation_time": "2019-04-24T15:48:11.964Z",
+      "id": "8",
       "references": [],
-      "title": "Item Key Bindings"
+      "title": "Weapon Aiming"
     }
   ],
-  "in-progress": [],
   "testing": [],
   "todo": [
     {
