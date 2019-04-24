@@ -51,6 +51,24 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
+      "creation_time": "2019-04-24T16:16:07.225Z",
+      "id": "9",
+      "references": [],
+      "title": "Field of View"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-24T20:46:05.729Z",
+      "id": "11",
+      "references": [],
+      "title": "Stance Animation"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
       "creation_time": "2019-04-24T15:48:11.964Z",
       "id": "8",
       "references": [],
@@ -60,14 +78,21 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-24T16:16:07.225Z",
-      "id": "9",
+      "creation_time": "2019-04-24T11:48:36.833Z",
+      "id": "7",
       "references": [],
-      "title": "Field of View"
+      "title": "Outposts"
     }
   ],
   "testing": [],
   "todo": [
+    {
+      "creation_time": "2019-04-24T16:59:41.916Z",
+      "id": "10",
+      "prio": 1,
+      "references": [],
+      "title": "Timed Event System"
+    },
     {
       "assignedTo": {
         "name": "johnmichaeljimenez"
@@ -76,15 +101,6 @@
       "id": "3",
       "references": [],
       "title": "Drop Item"
-    },
-    {
-      "assignedTo": {
-        "name": "johnmichaeljimenez"
-      },
-      "creation_time": "2019-04-24T11:48:36.833Z",
-      "id": "7",
-      "references": [],
-      "title": "Outposts"
     },
     {
       "assignedTo": {

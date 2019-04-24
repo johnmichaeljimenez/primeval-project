@@ -60,7 +60,7 @@ namespace Primeval.Item
         {
             if (myPlayer)
             {
-                running = myPlayer.movementModule.isRunning && myPlayer.movementModule.runDelay >= 0.8f;
+                running = myPlayer.movementModule.isRunning && myPlayer.movementModule.runDelay >= 0.3f;
                 grounded = myPlayer.movementModule.isGrounded;
                 moving = myPlayer.movementModule.inputDirection.sqrMagnitude > 0;
 

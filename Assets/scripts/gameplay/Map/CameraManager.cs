@@ -47,7 +47,7 @@ public class CameraManager : GenericSingletonClass<CameraManager>
             targetFov = aimingFov;
         }else{
             if (p.movementModule.isRunning && p.movementModule.inputDirection.z > 0)
-                targetFov = runningFov;
+                targetFov = Mathf.Lerp(normalFov, runningFov, p.movementModule.runDelay);
             else
                 targetFov = normalFov;
         }

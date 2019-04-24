@@ -7,6 +7,8 @@ namespace Primeval.PlayerCharacter
 {
     public class Stance : PlayerModuleBase
     {
+        public bool interrupt;
+
         public Stances currentStance;
 
         public override void Initialize()
@@ -20,7 +22,7 @@ namespace Primeval.PlayerCharacter
         {
             base.OnUpdate();
 
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKeyDown(KeyCode.C))
                 CmdChangeStance(isStanding ? Stances.Crouch : Stances.Stand);
         }
 
