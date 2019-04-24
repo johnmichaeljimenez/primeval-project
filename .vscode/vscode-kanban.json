@@ -55,6 +55,15 @@
       "id": "8",
       "references": [],
       "title": "Weapon Aiming"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-24T16:16:07.225Z",
+      "id": "9",
+      "references": [],
+      "title": "Field of View"
     }
   ],
   "testing": [],

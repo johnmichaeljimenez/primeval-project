@@ -66,6 +66,7 @@ namespace Primeval.PlayerCharacter
                 if (Input.GetKeyDown((KeyCode)n.data.defaultKeyBinding))
                 {
                     UseItem(i);
+                    break;
                 }
             }
         }

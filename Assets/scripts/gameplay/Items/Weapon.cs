@@ -23,7 +23,7 @@ namespace Primeval.Item
         public Transform firingEffect;
         float movementBlend = 0;
 
-        public bool aiming { get; private set; }
+        public static bool aiming { get; private set; }
 
         InventoryItem refItem
         {

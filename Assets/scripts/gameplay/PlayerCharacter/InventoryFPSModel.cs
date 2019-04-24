@@ -7,6 +7,8 @@ namespace Primeval.PlayerCharacter
 {
     public class InventoryFPSModel : PlayerModuleBase
     {
+        public ItemFPSModel activeModel;
+
         public Dictionary<string, ItemFPSModel> viewModels;
         Transform viewModelContainer;
         List<Transform> modelList;
@@ -48,6 +50,7 @@ namespace Primeval.PlayerCharacter
                 i.gameObject.SetActive(show);
                 if (show)
                 {
+                    activeModel = v;
                     v.referenceInventoryItem = inv;
                     break;
                 }
