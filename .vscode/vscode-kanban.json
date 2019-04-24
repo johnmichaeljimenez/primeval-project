@@ -4,6 +4,20 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
+      "creation_time": "2019-04-24T09:55:56.119Z",
+      "description": {
+        "content": "single-amount items still picked up even inventory is full",
+        "mime": "text/markdown"
+      },
+      "id": "4",
+      "references": [],
+      "title": "Item Weight",
+      "type": "bug"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
       "creation_time": "2019-04-23T18:54:38.313Z",
       "description": {
         "content": "*inventory item click\n*equip item\n*item fps view\n*weight count\n*fuel count\n*weapon view\n*sync inventory\n*ammo system\n*weight system\n*hitpoints\n*armor\n*weapon damage\n*healing\n*buffs",
@@ -17,15 +31,10 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-24T09:55:56.119Z",
-      "description": {
-        "content": "single-amount items still picked up even inventory is full",
-        "mime": "text/markdown"
-      },
-      "id": "4",
+      "creation_time": "2019-04-24T10:12:18.605Z",
+      "id": "5",
       "references": [],
-      "title": "Item Weight",
-      "type": "bug"
+      "title": "Cancel Mouse click on UI Hover"
     }
   ],
   "in-progress": [],

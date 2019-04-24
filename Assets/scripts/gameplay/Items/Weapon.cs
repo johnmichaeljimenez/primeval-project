@@ -58,7 +58,7 @@ namespace Primeval.Item
                     SetState(WeaponStates.Reload);
             }
 
-            if (Input.GetMouseButton(0))
+            if (InputSystem.mouseLeftHold)
             {
                 if (refItem.currentAmmo > 0)
                     SetState(WeaponStates.Fire);
