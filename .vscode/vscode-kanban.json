@@ -12,6 +12,20 @@
       "id": "1",
       "references": [],
       "title": "Migrated"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-24T09:55:56.119Z",
+      "description": {
+        "content": "single-amount items still picked up even inventory is full",
+        "mime": "text/markdown"
+      },
+      "id": "4",
+      "references": [],
+      "title": "Item Weight",
+      "type": "bug"
     }
   ],
   "in-progress": [],
@@ -21,19 +35,19 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-23T18:55:14.959Z",
-      "id": "2",
+      "creation_time": "2019-04-23T18:55:27.078Z",
+      "id": "3",
       "references": [],
-      "title": "Respawn"
+      "title": "Drop Item"
     },
     {
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-23T18:55:27.078Z",
-      "id": "3",
+      "creation_time": "2019-04-23T18:55:14.959Z",
+      "id": "2",
       "references": [],
-      "title": "Drop Item"
+      "title": "Respawn"
     }
   ]
 }

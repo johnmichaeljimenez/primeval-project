@@ -48,6 +48,15 @@ namespace Primeval.Item
                 int maxWeight = player.inventoryModule.capacity;
                 int passedAmount = 0;
                 int failSafe = 1000;
+                
+                if (currentAmount == 1 && playerWeight+itemData.weight > maxWeight)
+                {
+                    print(currentAmount);
+                    print(itemData.weight);
+                    print(playerWeight);
+                    return;
+                }
+
 
                 while (playerWeight < maxWeight && passedAmount < currentAmount)
                 {
