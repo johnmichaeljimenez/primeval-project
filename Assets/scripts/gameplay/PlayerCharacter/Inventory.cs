@@ -54,6 +54,20 @@ namespace Primeval.PlayerCharacter
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+            KeyBindingEvents();
+        }
+
+        public void KeyBindingEvents()
+        {
+            for (int i = itemList.Count - 1; i >= 0 ; i--)
+            {
+                InventoryItem n = itemList[i];
+                if (Input.GetKeyDown((KeyCode)n.data.defaultKeyBinding))
+                {
+                    UseItem(i);
+                }
+            }
         }
 
         public void AddItem(InventoryItem x)

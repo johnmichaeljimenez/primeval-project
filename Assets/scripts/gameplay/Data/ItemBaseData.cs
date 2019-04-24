@@ -16,7 +16,7 @@ namespace Primeval.Data
         public int weight = 0;
         public int amount = 1;
         public bool canBeEquipped;
-        public KeyCode defaultKeyCode;
+        public KeyBindings defaultKeyBinding;
         public int maxStackAmount = 1;
         
         [Header("Item")]
@@ -34,5 +34,19 @@ namespace Primeval.Data
     public enum UsageTypes
     {
         Normal, OneTime
+    }
+
+    public enum KeyBindings
+    {
+        None = -1,
+        Alpha1 = KeyCode.Alpha1,
+        Alpha2 = KeyCode.Alpha2,
+        Alpha3 = KeyCode.Alpha3,
+        Alpha4 = KeyCode.Alpha4,
+        Alpha5 = KeyCode.Alpha5,
+        Alpha6 = KeyCode.Alpha6,
+        Alpha7 = KeyCode.Alpha7,
+        Alpha8 = KeyCode.Alpha8,
+        Alpha9 = KeyCode.Alpha9
     }
 }
