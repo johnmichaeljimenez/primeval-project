@@ -129,8 +129,7 @@ namespace Primeval.PlayerCharacter
             if (p.isLocalPlayer)
                 p.vitalityModule.CmdDamage(amt);
         }
-
-
+        
 
         public static PlayerCharacter FindByID(uint x)
         {

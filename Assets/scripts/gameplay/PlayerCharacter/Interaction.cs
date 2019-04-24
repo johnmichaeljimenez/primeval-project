@@ -33,7 +33,15 @@ namespace Primeval.PlayerCharacter
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (currentInteractable)
+                    {
                         playerCharacter.CmdInteract(currentInteractable.gameObject);
+                    }else{
+                        Outpost outpost = hitInfo.collider.GetComponentInParent<Outpost>();
+                        if (outpost)
+                        {
+                            outpost.DropFuel();
+                        }
+                    }
                 }
             }else{
                 currentInteractable = null;

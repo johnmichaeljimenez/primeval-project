@@ -60,6 +60,15 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
+      "creation_time": "2019-04-24T11:48:36.833Z",
+      "id": "7",
+      "references": [],
+      "title": "Outposts"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
       "creation_time": "2019-04-24T20:46:05.729Z",
       "id": "11",
       "references": [],
@@ -78,10 +87,10 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-24T11:48:36.833Z",
-      "id": "7",
+      "creation_time": "2019-04-24T21:04:56.201Z",
+      "id": "12",
       "references": [],
-      "title": "Outposts"
+      "title": "Score Handler"
     }
   ],
   "testing": [],

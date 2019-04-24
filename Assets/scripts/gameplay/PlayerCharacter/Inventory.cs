@@ -135,6 +135,22 @@ namespace Primeval.PlayerCharacter
             }
         }
 
+        public void DropFuel()
+        {
+            if (itemList.Count == 0)
+                return;
+
+            foreach (InventoryItem i in itemList)
+            {
+                if (i.data.itemType == ItemTypes.FuelCell)
+                {
+                    //TODO: add score
+                    RemoveItem(i);
+                    break;
+                }
+            }
+        }
+
         public void RemoveItem(InventoryItem x, int amount = 1)
         {
             //TODO: disable weapon view on remove
