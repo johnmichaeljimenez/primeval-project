@@ -48,6 +48,33 @@
   ],
   "in-progress": [
     {
+      "creation_time": "2019-04-24T16:59:41.916Z",
+      "id": "10",
+      "prio": 1,
+      "references": [],
+      "title": "Timed Event System"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-24T21:04:56.201Z",
+      "id": "12",
+      "references": [],
+      "title": "Score Handler"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-24T20:46:05.729Z",
+      "id": "11",
+      "references": [],
+      "title": "Stance Animation"
+    }
+  ],
+  "testing": [
+    {
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
@@ -69,39 +96,13 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-24T20:46:05.729Z",
-      "id": "11",
-      "references": [],
-      "title": "Stance Animation"
-    },
-    {
-      "assignedTo": {
-        "name": "johnmichaeljimenez"
-      },
       "creation_time": "2019-04-24T15:48:11.964Z",
       "id": "8",
       "references": [],
       "title": "Weapon Aiming"
-    },
-    {
-      "assignedTo": {
-        "name": "johnmichaeljimenez"
-      },
-      "creation_time": "2019-04-24T21:04:56.201Z",
-      "id": "12",
-      "references": [],
-      "title": "Score Handler"
     }
   ],
-  "testing": [],
   "todo": [
-    {
-      "creation_time": "2019-04-24T16:59:41.916Z",
-      "id": "10",
-      "prio": 1,
-      "references": [],
-      "title": "Timed Event System"
-    },
     {
       "assignedTo": {
         "name": "johnmichaeljimenez"
