@@ -23,6 +23,9 @@ namespace Primeval.Events
         }
         public virtual void OnUpdate()
         {
+            if (!isActive)
+                return;
+
             currentTime -= Time.deltaTime;
             if (currentTime <= lastTime - 1)
             {
