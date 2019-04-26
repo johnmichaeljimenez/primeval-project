@@ -43,6 +43,8 @@ namespace Primeval.PlayerCharacter
         [HideInInspector]
         public Vector3 inputDirection;
 
+        public LayerMask collisionMask;
+
         public override void Initialize()
         {
             previousYPosition = characterController.transform.position.y;
@@ -104,7 +106,7 @@ namespace Primeval.PlayerCharacter
 
                 if (y > 0)
                 {
-                    Physics.SphereCast(sphereCastOrigin, sphereCastRadius, Vector3.up, out hitInfo_ceiling);
+                    Physics.SphereCast(sphereCastOrigin, sphereCastRadius, Vector3.up, out hitInfo_ceiling, 5, collisionMask);
                     hitDistance_ceiling = hitInfo_ceiling.distance;
                     if (hitDistance_ceiling > 0 && hitDistance_ceiling < 1.1f)
                     {
@@ -133,7 +135,7 @@ namespace Primeval.PlayerCharacter
 
         void CheckGrounded()
         {
-            Physics.SphereCast(sphereCastOrigin, sphereCastRadius, Vector3.down, out hitInfo_floor);
+            Physics.SphereCast(sphereCastOrigin, sphereCastRadius, Vector3.down, out hitInfo_floor, 5, collisionMask);
             hitDistance = hitInfo_floor.distance;
 
             bool pGrounded = isGrounded;
@@ -142,7 +144,19 @@ namespace Primeval.PlayerCharacter
             if (!pGrounded && isGrounded)
             {
                 previousYPosition = characterController.transform.position.y - sourceHeight;
-                print("y: " + Mathf.RoundToInt(previousYPosition));
+                // print("y: " + Mathf.RoundToInt(previousYPosition));
+
+                if (previousYPosition < 0)
+                {
+                    if (previousYPosition >= -4)
+                    {
+                        CameraAnimator.instance.LandAnimation();
+                    }else if (previousYPosition >= -6)
+                    {
+                        CameraAnimator.instance.HardLandAnimation();
+                    }
+                }
+
                 sourceHeight = characterController.transform.position.y;
             }
             //canJump = isGrounded && hitInfo.normal.

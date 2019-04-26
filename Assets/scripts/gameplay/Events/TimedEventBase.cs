@@ -15,6 +15,12 @@ namespace Primeval.Events
         public float currentTime { get; set; }
         float lastTime;
 
+        public float timeElapsed {
+            get{
+                return (lastTime/duration);
+            }
+        }
+
         public virtual void OnStart()
         {
             isActive = true;
@@ -55,6 +61,5 @@ namespace Primeval.Events
         {
             OnStart();
         }
-
     }
 }

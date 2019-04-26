@@ -44,6 +44,15 @@
       "id": "1",
       "references": [],
       "title": "Migrated"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-26T09:37:18.846Z",
+      "id": "13",
+      "references": [],
+      "title": "Camera Animation"
     }
   ],
   "in-progress": [
