@@ -40,3 +40,6 @@ sysinfo.txt
 *.exr
 LightingData.asset
 [Aa]rt/
+
+#photon
+[Pp]hoton Unity Networking/
