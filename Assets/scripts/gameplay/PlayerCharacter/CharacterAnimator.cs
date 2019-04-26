@@ -20,6 +20,17 @@ namespace Primeval.PlayerCharacter
                 animator.SetFloat("movementX", value);
             }
         }
+        public bool onAir
+        {
+            get
+            {
+                return animator.GetBool("onAir");
+            }
+            set
+            {
+                animator.SetBool("onAir", value);
+            }
+        }
         public float movementY
         {
             get
@@ -69,30 +80,33 @@ namespace Primeval.PlayerCharacter
                 float my = y + (y > 0 ? playerCharacter.movementModule.runDelay : 0);
                 int st = (int)playerCharacter.stanceModule.currentStance;
                 int wp = 0;
+                bool oa = playerCharacter.movementModule.isGrounded;
                 
                 if (playerCharacter.inventoryFPSModelModule.activeModel)
                 {
                     wp = playerCharacter.inventoryFPSModelModule.activeModel.transform.GetSiblingIndex()+1;
                 }
 
-                CmdAnimate(mx, my, st, wp);
+                CmdAnimate(mx, my, st, wp, oa);
             }
         }
 
         [Command]
-        public void CmdAnimate(float mx, float my, int st, int wp)
+        public void CmdAnimate(float mx, float my, int st, int wp, bool oa)
         {
-            RpcAnimate(mx, my, st, wp);
+            RpcAnimate(mx, my, st, wp, oa);
         }
 
         [ClientRpc]
-        public void RpcAnimate(float mx, float my, int st, int wp)
+        public void RpcAnimate(float mx, float my, int st, int wp, bool oa)
         {
             movementX = mx;
             movementY = my;
             stance = st;
+            onAir = !oa;
 
-            animator.SetLayerWeight(0, wp > 0? 0 : 1);
+
+            animator.SetLayerWeight(1, wp > 0? 1 : 0);
         }
 
         public void SetRagdoll(bool enable)
