@@ -68,23 +68,31 @@ namespace Primeval.PlayerCharacter
                 float mx = playerCharacter.movementModule.inputDirection.x;
                 float my = y + (y > 0 ? playerCharacter.movementModule.runDelay : 0);
                 int st = (int)playerCharacter.stanceModule.currentStance;
+                int wp = 0;
+                
+                if (playerCharacter.inventoryFPSModelModule.activeModel)
+                {
+                    wp = playerCharacter.inventoryFPSModelModule.activeModel.transform.GetSiblingIndex()+1;
+                }
 
-                CmdAnimate(mx, my, st);
+                CmdAnimate(mx, my, st, wp);
             }
         }
 
         [Command]
-        public void CmdAnimate(float mx, float my, int st)
+        public void CmdAnimate(float mx, float my, int st, int wp)
         {
-            RpcAnimate(mx, my, st);
+            RpcAnimate(mx, my, st, wp);
         }
 
         [ClientRpc]
-        public void RpcAnimate(float mx, float my, int st)
+        public void RpcAnimate(float mx, float my, int st, int wp)
         {
             movementX = mx;
             movementY = my;
             stance = st;
+
+            animator.SetLayerWeight(0, wp > 0? 0 : 1);
         }
 
         public void SetRagdoll(bool enable)
