@@ -142,7 +142,19 @@ namespace Primeval.PlayerCharacter
             if (!pGrounded && isGrounded)
             {
                 previousYPosition = characterController.transform.position.y - sourceHeight;
-                print("y: " + Mathf.RoundToInt(previousYPosition));
+                // print("y: " + Mathf.RoundToInt(previousYPosition));
+
+                if (previousYPosition < 0)
+                {
+                    if (previousYPosition >= -4)
+                    {
+                        CameraAnimator.instance.LandAnimation();
+                    }else if (previousYPosition >= -6)
+                    {
+                        CameraAnimator.instance.HardLandAnimation();
+                    }
+                }
+
                 sourceHeight = characterController.transform.position.y;
             }
             //canJump = isGrounded && hitInfo.normal.

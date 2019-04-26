@@ -42,6 +42,26 @@ public class CameraAnimator : GenericSingletonClass<CameraAnimator>
         animator.SetFloat("movement", t);
     }
 
+    public void LandAnimation()
+    {
+        SetState(CameraStates.Land);
+    }
+    public void HardLandAnimation()
+    {
+        SetState(CameraStates.LandHard);
+    }
+
+    public void OnLandStart()
+    {
+        interrupt = true;
+    }
+    
+    public void OnLandEnd()
+    {
+        interrupt = false;
+        SetState(CameraStates.Idle);
+    }
+
     public void SetState(CameraStates state)
     {
         animator.SetInteger("state", (int)state);
