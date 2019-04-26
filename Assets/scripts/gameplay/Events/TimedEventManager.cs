@@ -12,7 +12,7 @@ namespace Primeval.Events
 
         void Awake()
         {
-
+            
         }
 
         void Update()

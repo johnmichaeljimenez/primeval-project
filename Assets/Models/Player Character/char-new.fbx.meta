@@ -162,7 +162,12 @@ ModelImporter:
     13700014: Masks
     13700016: Shoes
     13700018: Tops
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 4d53c4ec7bf0c864289fbf57df462cec, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
