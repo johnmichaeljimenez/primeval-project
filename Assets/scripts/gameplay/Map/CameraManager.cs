@@ -66,6 +66,9 @@ public class CameraManager : GenericSingletonClass<CameraManager>
 
             transform.position = t.position;
             transform.rotation = t.rotation;
+
+            if (PlayerCharacter.myPlayer)
+                CameraAnimator.instance.Initialize();
         }
         else
         {

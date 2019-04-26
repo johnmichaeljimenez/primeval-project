@@ -6,14 +6,14 @@ using Mirror;
 
 namespace Primeval.Events
 {
-    public class CollectionPhase : TimedEventBase
+    public class LobbyPhase : TimedEventBase
     {
         public string notificationText;
 
         public override void OnStart()
         {
             base.OnStart();
-            //TODO: spawn items
+            //TODO: start game events
         }
 
         public override void OnUpdate()
@@ -24,6 +24,13 @@ namespace Primeval.Events
         public override void OnSecondTick()
         {
             base.OnSecondTick();
+            //TODO: notify
+        }
+
+        public override void OnExpire()
+        {
+            base.OnExpire();
+            //TODO: deploy players
         }
     }
 }

@@ -61,6 +61,5 @@ namespace Primeval.Events
         {
             OnStart();
         }
-
     }
 }
