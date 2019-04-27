@@ -18,6 +18,7 @@ namespace Primeval.PlayerCharacter
         public Inventory inventoryModule;
         public InventoryFPSModel inventoryFPSModelModule;
         public Movement movementModule;
+        public Mouselook mouselookModule;
         public Vitality vitalityModule;
         public ItemEffects itemEffectsModule;
         

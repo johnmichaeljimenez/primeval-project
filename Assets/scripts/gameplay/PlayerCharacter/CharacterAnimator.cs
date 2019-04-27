@@ -42,6 +42,30 @@ namespace Primeval.PlayerCharacter
                 animator.SetFloat("movementY", value);
             }
         }
+        
+        public float lookX
+        {
+            get
+            {
+                return animator.GetFloat("lookX");
+            }
+            set
+            {
+                animator.SetFloat("lookX", value);
+            }
+        }
+        
+        public float lookY
+        {
+            get
+            {
+                return animator.GetFloat("lookY");
+            }
+            set
+            {
+                animator.SetFloat("lookY", value);
+            }
+        }
         public int stance
         {
             get
@@ -81,29 +105,36 @@ namespace Primeval.PlayerCharacter
                 int st = (int)playerCharacter.stanceModule.currentStance;
                 int wp = 0;
                 bool oa = playerCharacter.movementModule.isGrounded;
+                float lx = 0;
+                float ly = 0;
                 
                 if (playerCharacter.inventoryFPSModelModule.activeModel)
                 {
                     wp = playerCharacter.inventoryFPSModelModule.activeModel.transform.GetSiblingIndex()+1;
                 }
 
-                CmdAnimate(mx, my, st, wp, oa);
+                lx = playerCharacter.mouselookModule.normalizedAngle.x;
+                ly = playerCharacter.mouselookModule.normalizedAngle.y;
+
+                CmdAnimate(mx, my, st, wp, oa, lx, ly);
             }
         }
 
         [Command]
-        public void CmdAnimate(float mx, float my, int st, int wp, bool oa)
+        public void CmdAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly)
         {
-            RpcAnimate(mx, my, st, wp, oa);
+            RpcAnimate(mx, my, st, wp, oa, lx, ly);
         }
 
         [ClientRpc]
-        public void RpcAnimate(float mx, float my, int st, int wp, bool oa)
+        public void RpcAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly)
         {
             movementX = mx;
             movementY = my;
             stance = st;
             onAir = !oa;
+            lookX = lx;
+            lookY = ly;
 
 
             animator.SetLayerWeight(1, wp > 0? 1 : 0);

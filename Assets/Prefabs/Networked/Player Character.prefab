@@ -218,6 +218,7 @@ MonoBehaviour:
   inventoryModule: {fileID: 6546291706182100089}
   inventoryFPSModelModule: {fileID: 2129538831845262535}
   movementModule: {fileID: 5628510822567083448}
+  mouselookModule: {fileID: 2990851780789527289}
   vitalityModule: {fileID: 4226618140570313729}
   itemEffectsModule: {fileID: 8855126669856839357}
 --- !u!143 &399999525139989053

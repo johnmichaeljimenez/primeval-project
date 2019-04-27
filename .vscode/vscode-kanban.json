@@ -18,10 +18,28 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
+      "creation_time": "2019-04-26T09:37:18.846Z",
+      "id": "13",
+      "references": [],
+      "title": "Camera Animation"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
       "creation_time": "2019-04-24T10:12:18.605Z",
       "id": "5",
       "references": [],
       "title": "Cancel Mouse click on UI Hover"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-27T03:20:19.825Z",
+      "id": "15",
+      "references": [],
+      "title": "crouch animation"
     },
     {
       "assignedTo": {
@@ -49,10 +67,19 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-26T09:37:18.846Z",
-      "id": "13",
+      "creation_time": "2019-04-27T03:20:09.660Z",
+      "id": "14",
       "references": [],
-      "title": "Camera Animation"
+      "title": "movement-animation"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
+      "creation_time": "2019-04-24T20:46:05.729Z",
+      "id": "11",
+      "references": [],
+      "title": "Stance Animation"
     }
   ],
   "in-progress": [
@@ -71,15 +98,6 @@
       "id": "12",
       "references": [],
       "title": "Score Handler"
-    },
-    {
-      "assignedTo": {
-        "name": "johnmichaeljimenez"
-      },
-      "creation_time": "2019-04-24T20:46:05.729Z",
-      "id": "11",
-      "references": [],
-      "title": "Stance Animation"
     }
   ],
   "testing": [

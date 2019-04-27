@@ -14,6 +14,8 @@ namespace Primeval.PlayerCharacter
 
         public Vector2 mouseSensitivity;
 
+        public Vector2 normalizedAngle { get; private set; }
+
 
         public override void Initialize()
         {
@@ -21,6 +23,8 @@ namespace Primeval.PlayerCharacter
 
             if (playerCharacter.isLocalPlayer)
                 CameraManager.instance.SetTarget(cameraPivotTransform);
+
+            normalizedAngle = Vector2.zero;
         }
 
 
@@ -36,7 +40,8 @@ namespace Primeval.PlayerCharacter
         {
             base.OnUpdate();
 
-            cameraPivotTransform.localPosition = playerCharacter.stanceModule.isStanding ? standPivotTransform.localPosition : crouchPivotTransform.localPosition;
+            Vector3 stanceTarget = Vector3.Lerp(cameraPivotTransform.localPosition, playerCharacter.stanceModule.isStanding ? standPivotTransform.localPosition : crouchPivotTransform.localPosition, Time.deltaTime * 10);
+            cameraPivotTransform.localPosition = stanceTarget;
 
             Vector3 v = new Vector3(cameraPivotTransform.localEulerAngles.x, bodyTransform.localEulerAngles.y, 0);
 
