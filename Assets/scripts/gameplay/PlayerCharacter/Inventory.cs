@@ -63,6 +63,10 @@ namespace Primeval.PlayerCharacter
             for (int i = itemList.Count - 1; i >= 0 ; i--)
             {
                 InventoryItem n = itemList[i];
+
+                if (n.data.defaultKeyBinding == KeyBindings.None)
+                    continue;
+
                 if (Input.GetKeyDown((KeyCode)n.data.defaultKeyBinding))
                 {
                     UseItem(i);

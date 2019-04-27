@@ -1198,6 +1198,7 @@ MonoBehaviour:
   itemPrefabs:
   - {fileID: 7519905709773301836, guid: d46469fe44570c945a1b17a069728c27, type: 3}
   - {fileID: 7519905709773301836, guid: eab7ef6890a1e3243a24c95e54f61c08, type: 3}
+  - {fileID: 7519905709773301836, guid: f077757079578514283d969d51569092, type: 3}
   itemSpawnPointSet: {fileID: 895184624}
 --- !u!1 &895184623
 GameObject:
