@@ -139,6 +139,7 @@ namespace Primeval.PlayerCharacter
 
             if (isLocalPlayer)
             {
+                playerCharacter.inventoryFPSModelModule.ShowItemModel(null, null);
                 respawnTime = 0;
             }
         }
