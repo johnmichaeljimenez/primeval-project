@@ -45,6 +45,15 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
+      "creation_time": "2019-04-27T16:25:45.555Z",
+      "id": "17",
+      "references": [],
+      "title": "Drop Pod Deployment"
+    },
+    {
+      "assignedTo": {
+        "name": "johnmichaeljimenez"
+      },
       "creation_time": "2019-04-24T16:16:07.225Z",
       "id": "9",
       "references": [],
@@ -103,10 +112,10 @@
       "assignedTo": {
         "name": "johnmichaeljimenez"
       },
-      "creation_time": "2019-04-27T16:25:45.555Z",
-      "id": "17",
+      "creation_time": "2019-04-23T18:55:14.959Z",
+      "id": "2",
       "references": [],
-      "title": "Drop Pod Deployment"
+      "title": "Respawn"
     }
   ],
   "in-progress": [
@@ -156,15 +165,6 @@
       "id": "3",
       "references": [],
       "title": "Drop Item"
-    },
-    {
-      "assignedTo": {
-        "name": "johnmichaeljimenez"
-      },
-      "creation_time": "2019-04-23T18:55:14.959Z",
-      "id": "2",
-      "references": [],
-      "title": "Respawn"
     }
   ]
 }
