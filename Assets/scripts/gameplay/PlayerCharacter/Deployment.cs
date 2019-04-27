@@ -13,6 +13,8 @@ namespace Primeval.PlayerCharacter
         public bool disabled { get; private set; }
         public Transform dropPodModel;
 
+        public AnimationCurve gravityCurve;
+
         public LayerMask dropCollisionMask;
 
         RaycastHit hitInfo;
@@ -50,7 +52,7 @@ namespace Primeval.PlayerCharacter
             {
                 if (isLocalPlayer)
                 {
-                    altitude = Mathf.Lerp(startHeight, hitInfo.point.y, time / duration);
+                    altitude = Mathf.Lerp(startHeight, hitInfo.point.y, gravityCurve.Evaluate(time / duration));
                     time += Time.deltaTime;
                     if (time >= duration)
                     {
@@ -93,16 +95,16 @@ namespace Primeval.PlayerCharacter
             time = 0;
             disabled = false;
             dropping = true;
-            dropPodModel.gameObject.SetActive(true);
 
             networkTransform.enabled = false;
+            transform.position = GetPoint(startHeight);
 
             if (isLocalPlayer)
             {
-                transform.position = GetPoint(startHeight);
                 Physics.Raycast(GetPoint(startHeight/2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
                 print("target location: " + GetPoint(hitInfo.point.y));
             }
+            dropPodModel.gameObject.SetActive(true);
             SetModuleActive();
         }
 

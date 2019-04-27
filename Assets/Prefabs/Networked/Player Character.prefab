@@ -364,7 +364,7 @@ MonoBehaviour:
   syncInterval: 0.1
   isActive: 0
   initialized: 0
-  playerModelTransform: {fileID: 399999524708279852}
+  playerModelTransform: {fileID: 4301462828620385096}
   layerVisibleName: PlayerCharacter
   layerInvisibleName: PlayerModel
 --- !u!114 &1628381672876429553
@@ -503,12 +503,36 @@ MonoBehaviour:
   isActive: 1
   initialized: 0
   dropPodModel: {fileID: 5223278815382890991}
+  gravityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   dropCollisionMask:
     serializedVersion: 2
     m_Bits: 1
   startHeight: 200
   networkTransform: {fileID: 1337203444}
-  duration: 5
+  duration: 2
 --- !u!1001 &306548616741882981
 PrefabInstance:
   m_ObjectHideFlags: 0
