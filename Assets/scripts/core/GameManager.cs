@@ -2,33 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using Primeval;
+using Primeval.PlayerCharacter;
 
-public class GameManager : GenericSingletonClass<GameManager> {
+public class GameManager : GenericSingletonClass<GameManager>
+{
 
     public string t;
-    public static float gameTime
-    {
-        get{
-            float t = 0;
+    public static float gameTime;
 
-            if (NetworkClient.isConnected)
-            {
-                t = (float)(NetworkTime.time-startTime);
-            }
-
-            return t;
-        }
-    }
-    
-    public static float startTime {get; private set;}
+    public static float startTime { get; private set; }
 
     public void InitializeTime()
     {
         //TODO: synchronize time to clients
         startTime = (float)NetworkTime.time;
+        gameTime = 0;
     }
-    
+
+    public void UpdateTime()
+    {
+        float t = 0;
+
+        if (NetworkClient.isConnected)
+        {
+            t = (float)(NetworkTime.time - startTime);
+                PlayerCharacter.myPlayer.CmdGameTime(t);
+        }
+    }
+
     public override void Awake()
     {
         base.Awake();
@@ -42,6 +43,7 @@ public class GameManager : GenericSingletonClass<GameManager> {
 
     void Update()
     {
-        
+        if (PlayerCharacter.myPlayer.isServer)
+            UpdateTime();
     }
 }

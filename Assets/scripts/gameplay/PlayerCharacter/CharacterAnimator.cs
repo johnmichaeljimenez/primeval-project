@@ -172,7 +172,7 @@ namespace Primeval.PlayerCharacter
             movementX = mx;
             movementY = my;
             stance = st;
-            onAir = !oa;
+            onAir = false;//!oa;
             lookX = lx;
             lookY = ly;
 

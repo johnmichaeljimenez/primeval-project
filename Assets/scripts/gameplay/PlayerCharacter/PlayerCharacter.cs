@@ -22,7 +22,7 @@ namespace Primeval.PlayerCharacter
         public Vitality vitalityModule;
         public ItemEffects itemEffectsModule;
         public CharacterAnimator characterAnimatorModule;
-        
+
         public override void OnStartLocalPlayer()
         {
             if (isLocalPlayer)
@@ -33,7 +33,7 @@ namespace Primeval.PlayerCharacter
                 hostPlayer = this;
                 ((NetworkManagerExt)(NetworkManager.singleton)).OnStartLevel();
             }
-            
+
             foreach (PlayerModuleBase i in modules)
             {
                 i.Initialize();
@@ -131,7 +131,20 @@ namespace Primeval.PlayerCharacter
             if (p.isLocalPlayer)
                 p.vitalityModule.CmdDamage(amt);
         }
-        
+
+        //Room Properties
+        [Command]
+        public void CmdGameTime(float t)
+        {
+            RpcGameTime(t);
+        }
+        [ClientRpc]
+        public void RpcGameTime(float t)
+        {
+            GameManager.gameTime = t;
+        }
+
+
 
         public static PlayerCharacter FindByID(uint x)
         {
