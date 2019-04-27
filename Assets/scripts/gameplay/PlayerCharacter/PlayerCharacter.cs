@@ -12,6 +12,7 @@ namespace Primeval.PlayerCharacter
         public static PlayerCharacter hostPlayer;
         public static PlayerCharacter myPlayer;
 
+        //TODO: move scores to game manager
         public int myScore
         {
             get;
