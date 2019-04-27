@@ -50,7 +50,7 @@ namespace Primeval.PlayerCharacter
             gameObject.name = "PC-" + netId.ToString();
 
             CmdSetScore(0);
-            deploymentModule.Deploy(Vector2.zero); //TODO: move to lobby phase
+            GameManager.DeployPlayer();
         }
 
         void Awake()
@@ -81,6 +81,18 @@ namespace Primeval.PlayerCharacter
                     i.OnClientUpdate();
                 }
             }
+        }
+
+        public void SetInput(bool e)
+        {
+            bool enableInput = e;
+            if (vitalityModule.isDead)
+                enableInput = false;
+
+            movementModule.isActive = enableInput;
+            mouselookModule.isActive = enableInput;
+            stanceModule.isActive = enableInput;
+            inventoryModule.isActive = enableInput;
         }
 
         // void OnDrawGizmos()

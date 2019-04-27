@@ -454,6 +454,8 @@ MonoBehaviour:
   initialized: 0
   maxHitPoints: 100
   maxArmorPoints: 100
+  minRespawnTime: 10
+  respawnAddMultiplier: 0.1
 --- !u!114 &8855126669856839357
 MonoBehaviour:
   m_ObjectHideFlags: 0

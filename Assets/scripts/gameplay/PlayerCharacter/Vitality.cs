@@ -31,10 +31,19 @@ namespace Primeval.PlayerCharacter
             private set;
         }
 
+        public float minRespawnTime;
+        public float respawnAddMultiplier;
+
+        int deathCount;
+
+        float respawnTime;
+
         public override void Initialize()
         {
             base.Initialize();
 
+            deathCount = 0;
+            respawnTime = 0;
             currentHitPoints = maxHitPoints;
             currentArmorPoints = maxArmorPoints;
 
@@ -45,6 +54,21 @@ namespace Primeval.PlayerCharacter
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+            if (isLocalPlayer)
+            {
+                if (isDead)
+                {
+                    respawnTime += Time.deltaTime;
+                    if (respawnTime >= minRespawnTime + (minRespawnTime * (deathCount * respawnAddMultiplier)))
+                    {
+                        respawnTime = 0;
+                        deathCount += 1;
+
+                        CmdRespawn();
+                    }
+                }
+            }
         }
 
 
@@ -108,12 +132,18 @@ namespace Primeval.PlayerCharacter
                 return;
 
             isDead = true;
-            timeKilled = NetworkTime.time;
+            timeKilled = GameManager.gameTime;
 
             //TODO: animate death
+            playerCharacter.characterAnimatorModule.SetRagdoll(true);
+
+            if (isLocalPlayer)
+            {
+                respawnTime = 0;
+            }
         }
 
-        public void OnRespawn(Vector3 position)
+        public void OnRespawn()
         {
             isDead = false;
 
@@ -124,10 +154,12 @@ namespace Primeval.PlayerCharacter
 
                 OnChangeHitpoints();
                 OnChangeArmorPoints();
+                GameManager.DeployPlayer();
             }
 
             
             //TODO: animate respawn
+            playerCharacter.characterAnimatorModule.SetRagdoll(false);
         }
 
         public int GetArmorReduction(int damage)
@@ -160,6 +192,19 @@ namespace Primeval.PlayerCharacter
         public void RpcKillPlayer()
         {
             OnKilled();
+        }
+        
+
+        [Command]
+        public void CmdRespawn()
+        {
+            RpcRespawn();
+        }
+
+        [ClientRpc]
+        public void RpcRespawn()
+        {
+            OnRespawn();
         }
     }
 }

@@ -47,4 +47,9 @@ public class GameManager : GenericSingletonClass<GameManager>
         if (NetworkManagerExt.isHosting)
             UpdateTime();
     }
+
+    public static void DeployPlayer()
+    {
+        PlayerCharacter.myPlayer.deploymentModule.Deploy(Vector2.zero);//TODO: move to lobby phase
+    }
 }

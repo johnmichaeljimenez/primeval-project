@@ -75,14 +75,6 @@ namespace Primeval.PlayerCharacter
             }
         }
 
-        public void SetModuleActive()
-        {
-            playerCharacter.movementModule.isActive = disabled;
-            playerCharacter.mouselookModule.isActive = disabled;
-            playerCharacter.stanceModule.isActive = disabled;
-            playerCharacter.inventoryModule.isActive = disabled;
-        }
-
         public Vector3 GetPoint(float y)
         {
             return new Vector3(dropOffPoint.x, y, dropOffPoint.y);
@@ -105,7 +97,7 @@ namespace Primeval.PlayerCharacter
                 print("target location: " + GetPoint(hitInfo.point.y));
             }
             dropPodModel.gameObject.SetActive(true);
-            SetModuleActive();
+            playerCharacter.SetInput(false);
         }
 
         public void OnLand()
@@ -123,7 +115,7 @@ namespace Primeval.PlayerCharacter
             networkTransform.enabled = true;
             disabled = true;
             dropPodModel.gameObject.SetActive(false); //TODO: animate
-            SetModuleActive();
+            playerCharacter.SetInput(true);
         }
 
         public void Deploy(Vector2 point)
