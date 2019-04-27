@@ -109,6 +109,7 @@ namespace Primeval.PlayerCharacter
         void Start()
         {
             SetRagdoll(false);
+            OnWeaponTPSChanged();
         }
 
         public override void OnUpdate()
