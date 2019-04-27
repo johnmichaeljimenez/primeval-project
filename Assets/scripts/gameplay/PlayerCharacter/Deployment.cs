@@ -118,6 +118,7 @@ namespace Primeval.PlayerCharacter
 
         public void OnOpen()
         {
+            //TODO: add interactable switch instead of locking input upon landing
             print("opening: " + playerCharacter.name);
             networkTransform.enabled = true;
             disabled = true;
