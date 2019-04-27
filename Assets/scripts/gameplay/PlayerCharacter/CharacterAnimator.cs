@@ -85,10 +85,10 @@ namespace Primeval.PlayerCharacter
         public override void Initialize()
         {
             base.Initialize();
+            weaponTPSModels = tpsWeaponContainers.GetComponentsInChildren<WeaponTPSModel>(true);
 
             movementX = 0;
             movementY = 0;
-            weaponTPSModels = tpsWeaponContainers.GetComponentsInChildren<WeaponTPSModel>(true);
         }
 
         int mCurrentWeaponTPS;
@@ -108,6 +108,7 @@ namespace Primeval.PlayerCharacter
 
         void Start()
         {
+            weaponTPSModels = tpsWeaponContainers.GetComponentsInChildren<WeaponTPSModel>(true);
             SetRagdoll(false);
             OnWeaponTPSChanged();
         }
@@ -139,7 +140,7 @@ namespace Primeval.PlayerCharacter
                 lx = 0;//playerCharacter.mouselookModule.normalizedAngle.x;
                 ly = playerCharacter.mouselookModule.normalizedAngle.y;
 
-                CmdAnimate(mx, my, st, currentWeaponTPS, oa, lx, ly);
+                CmdAnimate(mx, my, st, currentWeaponTPS, oa, lx, ly, currentWeaponTPS);
             }
         }
 
@@ -160,13 +161,13 @@ namespace Primeval.PlayerCharacter
         }
 
         [Command]
-        public void CmdAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly)
+        public void CmdAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly, int w)
         {
-            RpcAnimate(mx, my, st, wp, oa, lx, ly);
+            RpcAnimate(mx, my, st, wp, oa, lx, ly, w);
         }
 
         [ClientRpc]
-        public void RpcAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly)
+        public void RpcAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly, int w)
         {
             movementX = mx;
             movementY = my;
@@ -174,6 +175,9 @@ namespace Primeval.PlayerCharacter
             onAir = !oa;
             lookX = lx;
             lookY = ly;
+
+            if (!isLocalPlayer)
+                currentWeaponTPS = w;
 
 
             animator.SetLayerWeight(1, wp > 0? 1 : 0);
