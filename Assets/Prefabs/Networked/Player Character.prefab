@@ -471,6 +471,8 @@ MonoBehaviour:
   syncInterval: 0.1
   initialized: 0
   animator: {fileID: 4301462828627387564}
+  playerHandIK: {fileID: 2286671358068478501}
+  tpsWeaponContainers: {fileID: 6625818049933267139}
 --- !u!1001 &4262069207574830351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,6 +551,24 @@ Transform:
 --- !u!95 &4301462828627387564 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 41716553208641955, guid: 950224d99d5fca3408c0afb217e4edfa,
+    type: 3}
+  m_PrefabInstance: {fileID: 4262069207574830351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2286671358068478501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2638557568437030698, guid: 950224d99d5fca3408c0afb217e4edfa,
+    type: 3}
+  m_PrefabInstance: {fileID: 4262069207574830351}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ac6dbf4e01e85419374e10b63dc560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &6625818049933267139 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6977847366498127308, guid: 950224d99d5fca3408c0afb217e4edfa,
     type: 3}
   m_PrefabInstance: {fileID: 4262069207574830351}
   m_PrefabAsset: {fileID: 0}
