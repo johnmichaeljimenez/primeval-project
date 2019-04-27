@@ -50,6 +50,7 @@ namespace Primeval.PlayerCharacter
             gameObject.name = "PC-" + netId.ToString();
 
             CmdSetScore(0);
+            deploymentModule.Deploy(Vector2.zero); //TODO: move to lobby phase
         }
 
         void Awake()
