@@ -39,7 +39,11 @@ sysinfo.txt
 [Mm]odels/
 *.exr
 LightingData.asset
+LightingData.asset.meta
+Lightmap*
+ReflectionProbe*
 [Aa]rt/
+
 
 #photon
 [Pp]hoton Unity Networking/
