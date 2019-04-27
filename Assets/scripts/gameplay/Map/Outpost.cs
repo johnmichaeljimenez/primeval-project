@@ -19,5 +19,6 @@ public class Outpost : MonoBehaviour
     public void DropFuel()
     {
         PlayerCharacter.myPlayer.inventoryModule.DropFuel();
+        PlayerCharacter.myPlayer.CmdSetScore(PlayerCharacter.myPlayer.myScore+1);
     }
 }
