@@ -491,6 +491,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   initialized: 0
+  dropPodModel: {fileID: 5223278815382890991}
+  dropCollisionMask:
+    serializedVersion: 2
+    m_Bits: 1
+  startHeight: 200
+  networkTransform: {fileID: 1337203444}
+  duration: 5
 --- !u!1001 &306548616741882981
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Primeval.PlayerCharacter;
+using Mirror;
 
 namespace Primeval.PlayerCharacter
 {
@@ -11,6 +12,20 @@ namespace Primeval.PlayerCharacter
         public bool dropping { get; private set; }
         public bool disabled { get; private set; }
         public Transform dropPodModel;
+
+        public LayerMask dropCollisionMask;
+
+        RaycastHit hitInfo;
+
+        public float altitude
+        { get; private set; }
+
+        public float startHeight;
+
+        public NetworkTransform networkTransform;
+
+        public float duration;
+        public float time { get; private set; }
 
         public override void Initialize()
         {
@@ -24,6 +39,8 @@ namespace Primeval.PlayerCharacter
 
         public void OnDeploy()
         {
+            time = 0;
+
             disabled = false;
             dropping = true;
             dropPodModel.gameObject.SetActive(true);
