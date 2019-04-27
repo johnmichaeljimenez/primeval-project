@@ -29,6 +29,7 @@ namespace Primeval.PlayerCharacter
         public Vitality vitalityModule;
         public ItemEffects itemEffectsModule;
         public CharacterAnimator characterAnimatorModule;
+        public Deployment deploymentModule;
 
         public override void OnStartLocalPlayer()
         {
