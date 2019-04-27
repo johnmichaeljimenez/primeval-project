@@ -7,6 +7,17 @@ namespace Primeval.Networking
 {
     public class NetworkManagerExt : NetworkManager
     {
+        public static bool isHosting
+        {
+            get{
+                if (!PlayerCharacter.PlayerCharacter.myPlayer)
+                    return false;
+
+                return PlayerCharacter.PlayerCharacter.myPlayer.isServer;
+            }
+        }
+
+
         public void OnStartLevel()
         {
             print("start level");

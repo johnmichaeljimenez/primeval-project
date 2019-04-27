@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Primeval.Networking;
 using Primeval.PlayerCharacter;
 
 public class GameManager : GenericSingletonClass<GameManager>
@@ -43,7 +44,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     void Update()
     {
-        if (PlayerCharacter.myPlayer.isServer)
+        if (NetworkManagerExt.isHosting)
             UpdateTime();
     }
 }
