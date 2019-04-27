@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5493762896111461770}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Drop Pod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +73,18 @@ PrefabInstance:
     - target: {fileID: 100004, guid: 90e18ce98a2af56419f389e3e7ef7c93, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 90e18ce98a2af56419f389e3e7ef7c93, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 90e18ce98a2af56419f389e3e7ef7c93, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 90e18ce98a2af56419f389e3e7ef7c93, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 90e18ce98a2af56419f389e3e7ef7c93, type: 3}
       propertyPath: m_LocalPosition.x

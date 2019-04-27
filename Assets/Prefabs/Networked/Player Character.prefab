@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   characterController: {fileID: 399999525139989053}
   baseMovementSpeed:
@@ -322,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   bodyTransform: {fileID: 399999525139989052}
   cameraPivotTransform: {fileID: 399999524064179186}
@@ -341,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   interactionDistance: 3
   interactionLayers:
@@ -359,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   playerModelTransform: {fileID: 399999524708279852}
   layerVisibleName: PlayerCharacter
@@ -376,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   interrupt: 0
   currentStance: 0
@@ -405,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   allItemData:
   - {fileID: 11400000, guid: 979e13ab4e3ca0d4b80f7115c8ea7dbc, type: 2}
@@ -428,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   activeModel: {fileID: 0}
 --- !u!114 &4226618140570313729
@@ -443,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   maxHitPoints: 100
   maxArmorPoints: 100
@@ -459,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
 --- !u!114 &3388626421548309100
 MonoBehaviour:
@@ -473,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 0
   initialized: 0
   animator: {fileID: 4301462828627387564}
   playerHandIK: {fileID: 2286671358068478501}
@@ -490,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  isActive: 1
   initialized: 0
   dropPodModel: {fileID: 5223278815382890991}
   dropCollisionMask:

@@ -21,11 +21,14 @@ namespace Primeval.PlayerCharacter
             }
         }
 
+        public bool isActive;
+
         [HideInInspector]
         public bool initialized;
         public virtual void Initialize()
         {
             initialized = true;
+            isActive = true;
         }
 
         public virtual void OnUpdate()

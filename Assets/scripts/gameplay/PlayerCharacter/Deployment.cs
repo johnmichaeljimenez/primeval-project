@@ -39,6 +39,13 @@ namespace Primeval.PlayerCharacter
 
         void Update()
         {
+            if (disabled)
+            {
+                if (Input.GetKeyDown(KeyCode.P))
+                    Deploy(Vector2.zero);//TODO: remove this (test only)
+                return;
+            }
+
             if (dropping)
             {
                 if (isLocalPlayer)
@@ -66,6 +73,14 @@ namespace Primeval.PlayerCharacter
             }
         }
 
+        public void SetModuleActive()
+        {
+            playerCharacter.movementModule.isActive = disabled;
+            playerCharacter.mouselookModule.isActive = disabled;
+            playerCharacter.stanceModule.isActive = disabled;
+            playerCharacter.inventoryModule.isActive = disabled;
+        }
+
         public Vector3 GetPoint(float y)
         {
             return new Vector3(dropOffPoint.x, y, dropOffPoint.y);
@@ -73,6 +88,8 @@ namespace Primeval.PlayerCharacter
 
         public void OnDeploy(Vector2 p)
         {
+            print("deploying: " + playerCharacter.name);
+
             time = 0;
             disabled = false;
             dropping = true;
@@ -83,21 +100,27 @@ namespace Primeval.PlayerCharacter
             if (isLocalPlayer)
             {
                 transform.position = GetPoint(startHeight);
-                //raycast
                 Physics.Raycast(GetPoint(startHeight/2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
+                print("target location: " + GetPoint(hitInfo.point.y));
             }
+            SetModuleActive();
         }
 
         public void OnLand()
         {
+            transform.position = GetPoint(hitInfo.point.y);
+            print("landing: " + playerCharacter.name);
             dropping = false;
+            //TODO: play impact
         }
 
         public void OnOpen()
         {
+            print("opening: " + playerCharacter.name);
             networkTransform.enabled = true;
             disabled = true;
             dropPodModel.gameObject.SetActive(false); //TODO: animate
+            SetModuleActive();
         }
 
         public void Deploy(Vector2 point)

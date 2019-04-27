@@ -69,7 +69,7 @@ namespace Primeval.PlayerCharacter
         {
             foreach (PlayerModuleBase i in modules)
             {
-                if (!i.initialized)
+                if (!i.initialized || !i.isActive)
                     continue;
 
                 if (isLocalPlayer)
