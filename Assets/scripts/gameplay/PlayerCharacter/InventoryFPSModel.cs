@@ -38,6 +38,9 @@ namespace Primeval.PlayerCharacter
 
         public void ShowItemModel(string n, InventoryItem inv)
         {
+            if (inv == null)
+                activeModel = null;
+
             foreach (Transform i in modelList)
             {
                 i.gameObject.SetActive(false);

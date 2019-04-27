@@ -102,7 +102,7 @@ namespace Primeval.PlayerCharacter
 
         public void OnLand()
         {
-            transform.position = GetPoint(hitInfo.point.y);
+            // transform.position = GetPoint(hitInfo.point.y);
             print("landing: " + playerCharacter.name);
             dropping = false;
             //TODO: play impact
