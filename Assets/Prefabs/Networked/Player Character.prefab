@@ -221,6 +221,7 @@ MonoBehaviour:
   mouselookModule: {fileID: 2990851780789527289}
   vitalityModule: {fileID: 4226618140570313729}
   itemEffectsModule: {fileID: 8855126669856839357}
+  characterAnimatorModule: {fileID: 3388626421548309100}
 --- !u!143 &399999525139989053
 CharacterController:
   m_ObjectHideFlags: 0

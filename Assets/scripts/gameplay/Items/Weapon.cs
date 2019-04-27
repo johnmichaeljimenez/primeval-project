@@ -117,6 +117,7 @@ namespace Primeval.Item
         public virtual void OnFireStart()
         {
             interrupt = this;
+            myPlayer.characterAnimatorModule.CmdAnimatorTrigger("fireWeapon");
         }
         public virtual void OnApplyFire()
         {
@@ -153,6 +154,7 @@ namespace Primeval.Item
         public virtual void OnReloadStart()
         {
             interrupt = this;
+            myPlayer.characterAnimatorModule.CmdAnimatorTrigger("reloadWeapon");
         }
         public virtual void OnApplyReload()
         {

@@ -21,6 +21,7 @@ namespace Primeval.PlayerCharacter
         public Mouselook mouselookModule;
         public Vitality vitalityModule;
         public ItemEffects itemEffectsModule;
+        public CharacterAnimator characterAnimatorModule;
         
         public override void OnStartLocalPlayer()
         {

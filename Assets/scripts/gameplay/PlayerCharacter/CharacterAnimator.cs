@@ -181,6 +181,20 @@ namespace Primeval.PlayerCharacter
             animator.SetLayerWeight(3, wp > 0? 1 : 0);
         }
 
+        
+
+        [Command]
+        public void CmdAnimatorTrigger(string n)
+        {
+            RpcAnimatorTrigger(n);
+        }
+
+        [ClientRpc]
+        public void RpcAnimatorTrigger(string n)
+        {
+            animator.SetTrigger(n);
+        }
+
         public void SetRagdoll(bool enable)
         {
             foreach (Rigidbody i in GetComponentsInChildren<Rigidbody>())
