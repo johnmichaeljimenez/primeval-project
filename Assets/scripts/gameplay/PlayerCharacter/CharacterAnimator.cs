@@ -113,7 +113,7 @@ namespace Primeval.PlayerCharacter
                     wp = playerCharacter.inventoryFPSModelModule.activeModel.transform.GetSiblingIndex()+1;
                 }
 
-                lx = playerCharacter.mouselookModule.normalizedAngle.x;
+                lx = 0;//playerCharacter.mouselookModule.normalizedAngle.x;
                 ly = playerCharacter.mouselookModule.normalizedAngle.y;
 
                 CmdAnimate(mx, my, st, wp, oa, lx, ly);
@@ -138,6 +138,7 @@ namespace Primeval.PlayerCharacter
 
 
             animator.SetLayerWeight(1, wp > 0? 1 : 0);
+            animator.SetLayerWeight(2, wp > 0? 1 : 0);
         }
 
         public void SetRagdoll(bool enable)

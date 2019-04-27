@@ -47,9 +47,37 @@ namespace Primeval.PlayerCharacter
 
             v.x -= Input.GetAxis("Mouse Y") * mouseSensitivity.y;
             v.y += Input.GetAxis("Mouse X") * mouseSensitivity.x;
+            v.x = ClampAngle(v.x, -80, 80);
 
             cameraPivotTransform.localEulerAngles = Vector3.right * v.x;
             bodyTransform.localEulerAngles = Vector3.up * v.y;
+
+            normalizedAngle = Quaternion.Euler(cameraPivotTransform.eulerAngles) * Vector3.forward;
+        }
+
+        float ClampAngle(float a, float min, float max)
+        {
+            while (max < min) max += 360;
+            while (a > max) a -= 360;
+            while (a < min) a += 360;
+
+            if (a > max)
+            {
+                if (a - (max + min) * 0.5f < 180)
+                {
+                    return max;
+                }
+                else
+                {
+                    return min;
+                }
+            }
+            else
+            {
+                return a;
+            }
         }
     }
+
+
 }
