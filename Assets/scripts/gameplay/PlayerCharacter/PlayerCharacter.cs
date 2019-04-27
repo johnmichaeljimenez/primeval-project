@@ -12,6 +12,12 @@ namespace Primeval.PlayerCharacter
         public static PlayerCharacter hostPlayer;
         public static PlayerCharacter myPlayer;
 
+        public int myScore
+        {
+            get;
+            private set;
+        }
+
         PlayerModuleBase[] modules;
 
         public Stance stanceModule;
@@ -40,6 +46,8 @@ namespace Primeval.PlayerCharacter
             }
 
             gameObject.name = "PC-" + netId.ToString();
+
+            CmdSetScore(0);
         }
 
         void Awake()
@@ -130,6 +138,18 @@ namespace Primeval.PlayerCharacter
             PlayerCharacter p = to.GetComponent<PlayerCharacter>();
             if (p.isLocalPlayer)
                 p.vitalityModule.CmdDamage(amt);
+        }
+
+        [Command]
+        public void CmdSetScore(int x)
+        {
+            RpcSetScore(x);
+        }
+
+        [ClientRpc]
+        public void RpcSetScore(int x)
+        {
+            myScore = x;
         }
 
         //Room Properties
