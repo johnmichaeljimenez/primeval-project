@@ -634,7 +634,7 @@ MonoBehaviour:
     m_Bits: 1
   startHeight: 1000
   networkTransform: {fileID: 1337203444}
-  duration: 5
+  duration: 3
   deploySound: {fileID: 8300000, guid: 42dfb4357294b4e0b916bcf563ac04cf, type: 3}
   landingSound: {fileID: 8300000, guid: 8e3b4236a7258471caabb3542eee992b, type: 3}
   openSound: {fileID: 8300000, guid: e177cc5b807bde04799a1d18b855b789, type: 3}

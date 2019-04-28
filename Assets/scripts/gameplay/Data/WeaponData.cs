@@ -18,6 +18,11 @@ namespace Primeval.Data
         public int ammo1Capacity;
         public int ammo2Capacity;
         public AmmoData ammunitionType;
+
+        [Header("Audio")]
+        public AudioClip firingClip;
+        public AudioClip firingFarClip;
+        public AudioClip firingDryClip;
     }
 
 

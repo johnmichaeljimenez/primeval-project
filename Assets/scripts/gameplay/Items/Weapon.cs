@@ -80,6 +80,9 @@ namespace Primeval.Item
                     SetState(WeaponStates.Fire);
             }
 
+            if (InputSystem.mouseLeftClicked && refItem.currentAmmo <= 0)
+                PlayerCharacter.PlayerCharacter.myPlayer.audioPlayerModule.PlaySound(weaponData.firingDryClip);
+
             if (weaponData.canAim && !running)
             {
                 aiming = InputSystem.mouseRightHold && weaponAnimator.GetInteger("state") == (int)WeaponStates.Idle;
@@ -122,7 +125,11 @@ namespace Primeval.Item
         public virtual void OnApplyFire()
         {
             if (!refItem.hasAmmo)
+            {
                 return;
+            }
+
+            PlayerCharacter.PlayerCharacter.myPlayer.audioPlayerModule.PlaySound(weaponData.firingClip);
 
             refItem.SetAmmoCount(refItem.currentAmmo - 1);
 

@@ -31,3 +31,6 @@ MonoBehaviour:
   ammo1Capacity: 30
   ammo2Capacity: 120
   ammunitionType: {fileID: 11400000, guid: 803114423d1b8814f96bda31d88ac4fe, type: 2}
+  firingClip: {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}
+  firingFarClip: {fileID: 8300000, guid: 5f65f7a864d7742fda4f10edfde922d2, type: 3}
+  firingDryClip: {fileID: 8300000, guid: 3b68f9724077cbe478fda4b37faebceb, type: 3}
