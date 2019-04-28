@@ -22,5 +22,6 @@ MonoBehaviour:
   maxStackAmount: 5
   itemType: 2
   usageType: 1
+  useClip: {fileID: 8300000, guid: 703296828d8a68043a76c5fce11abdd9, type: 3}
   effectAmount: 25
   effectDuration: 10

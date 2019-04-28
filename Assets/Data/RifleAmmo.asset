@@ -22,3 +22,4 @@ MonoBehaviour:
   maxStackAmount: 30
   itemType: 5
   usageType: 1
+  useClip: {fileID: 0}

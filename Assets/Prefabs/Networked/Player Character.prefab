@@ -522,6 +522,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 803114423d1b8814f96bda31d88ac4fe, type: 2}
   itemList: []
   capacity: 70
+  addItemClip: {fileID: 8300000, guid: faf62cfac2e5b534da022244418e63c8, type: 3}
+  overCapacityClip: {fileID: 8300000, guid: 4fe81b6d4ca0de24cad8100911ae25b4, type: 3}
 --- !u!114 &2129538831845262535
 MonoBehaviour:
   m_ObjectHideFlags: 0

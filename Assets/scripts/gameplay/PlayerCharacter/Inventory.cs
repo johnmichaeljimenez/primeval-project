@@ -227,6 +227,7 @@ namespace Primeval.PlayerCharacter
         public void UseItem(int index)
         {
             InventoryItem i = itemList[index];
+            playerCharacter.audioPlayerModule.PlaySound(i.data.useClip);
 
             if (i.data.itemType == ItemTypes.Aid)
             {

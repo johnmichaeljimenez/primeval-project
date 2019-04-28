@@ -58,7 +58,6 @@ namespace Primeval.Item
                     return;
                 }
 
-                player.audioPlayerModule.PlaySound(player.inventoryModule.addItemClip);
 
                 while (playerWeight < maxWeight && passedAmount < currentAmount)
                 {
@@ -74,10 +73,13 @@ namespace Primeval.Item
                 }
 
                 if (passedAmount == 0)
+                {
+                    player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip);
                     return;
+                }
 
                 currentAmount -= passedAmount;
-
+                player.audioPlayerModule.PlaySound(player.inventoryModule.addItemClip);
 
                 InventoryItem i = new InventoryItem();
                 i.data = itemData;

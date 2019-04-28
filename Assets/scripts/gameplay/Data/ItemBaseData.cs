@@ -22,6 +22,9 @@ namespace Primeval.Data
         [Header("Item")]
         public ItemTypes itemType;
         public UsageTypes usageType;
+        
+        [Header("Audio")]
+        public AudioClip useClip;
 
     }
 

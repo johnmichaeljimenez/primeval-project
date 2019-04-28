@@ -23,6 +23,7 @@ MonoBehaviour:
   maxStackAmount: 1
   itemType: 1
   usageType: 0
+  useClip: {fileID: 8300000, guid: e7632c6401c09437e83de45d33c5858e, type: 3}
   damage: 12
   spread: 10
   weaponType: 1
