@@ -3364,6 +3364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0
+  panel: {fileID: 2068857391}
 --- !u!1 &1796898620
 GameObject:
   m_ObjectHideFlags: 0

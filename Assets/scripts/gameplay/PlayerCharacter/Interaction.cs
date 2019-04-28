@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Primeval.Item;
+using Primeval.ViewModels;
 
 namespace Primeval.PlayerCharacter
 {
@@ -21,6 +23,7 @@ namespace Primeval.PlayerCharacter
         public override void OnUpdate()
         {
             base.OnUpdate();
+            VMInteraction.instance.Set("", 0, 0, false);
 
             Ray r = CameraManager.instance.mainCamera.ViewportPointToRay(Vector3.one/2);
             Physics.Raycast(r, out hitInfo, interactionDistance, interactionLayers);
@@ -30,6 +33,14 @@ namespace Primeval.PlayerCharacter
                 Debug.DrawLine(r.origin, hitInfo.point, Color.red);
                 Interactable i = hitInfo.collider.GetComponentInParent<Interactable>();
                 currentInteractable = i;
+                if (currentInteractable)
+                {
+                    ItemBase b = currentInteractable.GetComponent<ItemBase>();
+                    if (b)
+                    {
+                        VMInteraction.instance.Set(b.itemData.name, b.itemData.weight*b.currentAmount, b.currentAmount, true);   
+                    }
+                }
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {

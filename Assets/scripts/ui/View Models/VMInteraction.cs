@@ -8,6 +8,8 @@ namespace Primeval.ViewModels
     public class VMInteraction : GenericSingletonClass<VMInteraction>, INotifyPropertyChanged
     {
 
+        public Transform panel;
+
         private string itemName = "";
 
         [Binding]
@@ -93,9 +95,18 @@ namespace Primeval.ViewModels
                 }
 
                 current = value;
+                panel.gameObject.SetActive(current);
 
                 OnPropertyChanged("Current");
             }
+        }
+
+        public void Set(string i, int w, int a, bool c)
+        {
+            ItemName = i;
+            ItemWeight = w;
+            ItemAmount = a;
+            Current = c;
         }
         
 
