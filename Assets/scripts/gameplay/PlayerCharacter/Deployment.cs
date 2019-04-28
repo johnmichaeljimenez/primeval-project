@@ -46,8 +46,11 @@ namespace Primeval.PlayerCharacter
         {
             if (disabled)
             {
-                if (Input.GetKeyDown(KeyCode.P))
-                    Deploy(Vector2.zero);//TODO: remove this (test only)
+                if (isLocalPlayer)
+                {
+                    if (Input.GetKeyDown(KeyCode.P))
+                        Deploy(Vector2.zero);//TODO: remove this (test only)
+                }
                 return;
             }
 
@@ -99,7 +102,7 @@ namespace Primeval.PlayerCharacter
             if (isLocalPlayer)
             {
                 playerCharacter.audioPlayerModule.PlaySound(deploySound, true);
-                Physics.Raycast(GetPoint(startHeight/2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
+                Physics.Raycast(GetPoint(startHeight / 2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
                 print("target location: " + GetPoint(hitInfo.point.y));
                 VMDeployment.instance.TargetHeight = hitInfo.point.y.ToString("F1");
                 VMDeployment.instance.StartingHeight = startHeight.ToString("F1");
@@ -130,7 +133,7 @@ namespace Primeval.PlayerCharacter
             disabled = true;
             dropPodModel.gameObject.SetActive(false); //TODO: animate
             playerCharacter.SetInput(true);
-            
+
             if (isLocalPlayer)
             {
                 playerCharacter.audioPlayerModule.PlaySound(openSound, true);
