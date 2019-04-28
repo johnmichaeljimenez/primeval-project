@@ -12,6 +12,8 @@ namespace Primeval.PlayerCharacter
         Interactable currentInteractable;
         RaycastHit hitInfo;
 
+        public AudioClip interactionClip;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -34,11 +36,13 @@ namespace Primeval.PlayerCharacter
                 {
                     if (currentInteractable)
                     {
+                        playerCharacter.audioPlayerModule.PlaySound(interactionClip);
                         playerCharacter.CmdInteract(currentInteractable.gameObject);
                     }else{
                         Outpost outpost = hitInfo.collider.GetComponentInParent<Outpost>();
                         if (outpost)
                         {
+                            playerCharacter.audioPlayerModule.PlaySound(interactionClip);
                             outpost.DropFuel();
                         }
                     }

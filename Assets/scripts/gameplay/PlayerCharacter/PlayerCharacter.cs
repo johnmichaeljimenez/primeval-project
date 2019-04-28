@@ -30,6 +30,7 @@ namespace Primeval.PlayerCharacter
         public ItemEffects itemEffectsModule;
         public CharacterAnimator characterAnimatorModule;
         public Deployment deploymentModule;
+        public AudioPlayer audioPlayerModule;
 
         public override void OnStartLocalPlayer()
         {

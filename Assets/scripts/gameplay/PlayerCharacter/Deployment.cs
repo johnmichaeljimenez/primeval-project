@@ -30,6 +30,8 @@ namespace Primeval.PlayerCharacter
         public float duration;
         public float time { get; private set; }
 
+        public AudioClip deploySound, landingSound, openSound;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -96,6 +98,7 @@ namespace Primeval.PlayerCharacter
 
             if (isLocalPlayer)
             {
+                playerCharacter.audioPlayerModule.PlaySound(deploySound);
                 Physics.Raycast(GetPoint(startHeight/2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
                 print("target location: " + GetPoint(hitInfo.point.y));
                 VMDeployment.instance.TargetHeight = hitInfo.point.y.ToString("F1");
@@ -112,6 +115,11 @@ namespace Primeval.PlayerCharacter
             print("landing: " + playerCharacter.name);
             dropping = false;
             //TODO: play impact
+
+            if (isLocalPlayer)
+            {
+                playerCharacter.audioPlayerModule.PlaySound(landingSound);
+            }
         }
 
         public void OnOpen()
@@ -122,6 +130,11 @@ namespace Primeval.PlayerCharacter
             disabled = true;
             dropPodModel.gameObject.SetActive(false); //TODO: animate
             playerCharacter.SetInput(true);
+            
+            if (isLocalPlayer)
+            {
+                playerCharacter.audioPlayerModule.PlaySound(openSound);
+            }
         }
 
         public void Deploy(Vector2 point)
