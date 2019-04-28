@@ -8,7 +8,7 @@ namespace Primeval.ViewModels
     public class VMGameTime : MonoBehaviour, INotifyPropertyChanged
     {
 
-        private string text = "<Type some text>";
+        private string text = "00:00.0";
 
         [Binding]
         public string Text
@@ -39,7 +39,13 @@ namespace Primeval.ViewModels
 
         void Update()
         {
-            Text = GameManager.gameTime.ToString("F2");
+            int ct = Mathf.RoundToInt(GameManager.gameTime);
+            float diff = GameManager.gameTime-ct;
+            string ds = diff.ToString("F1");
+            int mm, ss;
+            mm = ct / 60;
+            ss = ct % 60;
+            Text = mm.ToString().PadLeft(2, '0') + ":" + ss.ToString().PadLeft(2, '0') + ds.Substring(ds.IndexOf("."));
         }
 
         private void OnPropertyChanged(string propertyName)

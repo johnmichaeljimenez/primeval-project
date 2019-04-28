@@ -532,9 +532,9 @@ MonoBehaviour:
   dropCollisionMask:
     serializedVersion: 2
     m_Bits: 1
-  startHeight: 200
+  startHeight: 1000
   networkTransform: {fileID: 1337203444}
-  duration: 2
+  duration: 5
 --- !u!1001 &306548616741882981
 PrefabInstance:
   m_ObjectHideFlags: 0
