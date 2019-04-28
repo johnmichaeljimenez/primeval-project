@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Primeval.PlayerCharacter;
 using Mirror;
+using Primeval.ViewModels;
 
 namespace Primeval.PlayerCharacter
 {
@@ -52,7 +53,9 @@ namespace Primeval.PlayerCharacter
             {
                 if (isLocalPlayer)
                 {
-                    altitude = Mathf.Lerp(startHeight, hitInfo.point.y, gravityCurve.Evaluate(time / duration));
+                    float t = gravityCurve.Evaluate(time / duration);
+                    altitude = Mathf.Lerp(startHeight, hitInfo.point.y, t);
+                    VMDeployment.instance.Altitude = t;
                     time += Time.deltaTime;
                     if (time >= duration)
                     {
@@ -95,6 +98,8 @@ namespace Primeval.PlayerCharacter
             {
                 Physics.Raycast(GetPoint(startHeight/2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
                 print("target location: " + GetPoint(hitInfo.point.y));
+                VMDeployment.instance.TargetHeight = hitInfo.point.y.ToString("F1");
+                VMDeployment.instance.StartingHeight = startHeight.ToString("F1");
             }
             dropPodModel.gameObject.SetActive(true);
             playerCharacter.SetInput(false);
