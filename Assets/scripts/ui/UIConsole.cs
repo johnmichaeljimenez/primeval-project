@@ -19,7 +19,7 @@ public class UIConsole : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tilde))
+        if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeInHierarchy);
         }
