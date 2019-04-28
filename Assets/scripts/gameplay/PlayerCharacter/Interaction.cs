@@ -18,6 +18,7 @@ namespace Primeval.PlayerCharacter
         public override void Initialize()
         {
             base.Initialize();
+            VMInteraction.instance.Set("", 0, 0, false);
         }
 
         public override void OnUpdate()
