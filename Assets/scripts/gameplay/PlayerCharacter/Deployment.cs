@@ -98,7 +98,7 @@ namespace Primeval.PlayerCharacter
 
             if (isLocalPlayer)
             {
-                playerCharacter.audioPlayerModule.PlaySound(deploySound);
+                playerCharacter.audioPlayerModule.PlaySound(deploySound, true);
                 Physics.Raycast(GetPoint(startHeight/2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
                 print("target location: " + GetPoint(hitInfo.point.y));
                 VMDeployment.instance.TargetHeight = hitInfo.point.y.ToString("F1");
@@ -118,7 +118,7 @@ namespace Primeval.PlayerCharacter
 
             if (isLocalPlayer)
             {
-                playerCharacter.audioPlayerModule.PlaySound(landingSound);
+                playerCharacter.audioPlayerModule.PlaySound(landingSound, true);
             }
         }
 
@@ -133,7 +133,7 @@ namespace Primeval.PlayerCharacter
             
             if (isLocalPlayer)
             {
-                playerCharacter.audioPlayerModule.PlaySound(openSound);
+                playerCharacter.audioPlayerModule.PlaySound(openSound, true);
             }
         }
 

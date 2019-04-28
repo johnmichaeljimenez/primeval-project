@@ -98,7 +98,7 @@ namespace Primeval.PlayerCharacter
                 if (Input.GetKeyDown(KeyCode.Space) && playerCharacter.stanceModule.isStanding)
                 {
                     y = jumpForce;
-                    playerCharacter.audioPlayerModule.PlaySound(jumpClip);
+                    playerCharacter.audioPlayerModule.PlaySound(jumpClip, true);
                 }
                 else
                 {
@@ -161,7 +161,7 @@ namespace Primeval.PlayerCharacter
                     }
                     else if (previousYPosition >= -6)
                     {
-                        playerCharacter.audioPlayerModule.PlaySound(landClip);
+                        playerCharacter.audioPlayerModule.PlaySound(landClip,true);
                         CameraAnimator.instance.HardLandAnimation();
                     }
                 }

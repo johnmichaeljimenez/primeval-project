@@ -81,7 +81,7 @@ namespace Primeval.Item
             }
 
             if (InputSystem.mouseLeftClicked && refItem.currentAmmo <= 0)
-                PlayerCharacter.PlayerCharacter.myPlayer.audioPlayerModule.PlaySound(weaponData.firingDryClip);
+                PlayerCharacter.PlayerCharacter.myPlayer.audioPlayerModule.PlaySound(weaponData.firingDryClip, true);
 
             if (weaponData.canAim && !running)
             {
@@ -129,7 +129,7 @@ namespace Primeval.Item
                 return;
             }
 
-            PlayerCharacter.PlayerCharacter.myPlayer.audioPlayerModule.PlaySound(weaponData.firingClip);
+            PlayerCharacter.PlayerCharacter.myPlayer.audioPlayerModule.PlaySound(weaponData.firingClip, true);
 
             refItem.SetAmmoCount(refItem.currentAmmo - 1);
 

@@ -656,6 +656,29 @@ MonoBehaviour:
   syncInterval: 0.1
   isActive: 0
   initialized: 0
+  soundBank:
+  - {fileID: 8300000, guid: c348d18f02c364015937d723ff43eeb7, type: 3}
+  - {fileID: 8300000, guid: e8a3acb7fbfba714a91bebd72f35e868, type: 3}
+  - {fileID: 8300000, guid: e4b7c2c5aee414747889b40b7e477859, type: 3}
+  - {fileID: 8300000, guid: 42dfb4357294b4e0b916bcf563ac04cf, type: 3}
+  - {fileID: 8300000, guid: 8e3b4236a7258471caabb3542eee992b, type: 3}
+  - {fileID: 8300000, guid: e177cc5b807bde04799a1d18b855b789, type: 3}
+  - {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}
+  - {fileID: 8300000, guid: 5f65f7a864d7742fda4f10edfde922d2, type: 3}
+  - {fileID: 8300000, guid: 3b68f9724077cbe478fda4b37faebceb, type: 3}
+  - {fileID: 8300000, guid: 0c9806363b0b29d42b804bf49a01d559, type: 3}
+  - {fileID: 8300000, guid: 2f71c61631ecb854f8c19ef27fe681b7, type: 3}
+  - {fileID: 8300000, guid: e7632c6401c09437e83de45d33c5858e, type: 3}
+  - {fileID: 8300000, guid: 703296828d8a68043a76c5fce11abdd9, type: 3}
+  - {fileID: 8300000, guid: 564b9ced10b8c604a86a3d9d7d68ca22, type: 3}
+  - {fileID: 8300000, guid: 2518b7168baeba64d9bd1de6699aab14, type: 3}
+  - {fileID: 8300000, guid: 495e22e8982503b459c6c7d62b4796aa, type: 3}
+  - {fileID: 8300000, guid: 4fe81b6d4ca0de24cad8100911ae25b4, type: 3}
+  - {fileID: 8300000, guid: faf62cfac2e5b534da022244418e63c8, type: 3}
+  - {fileID: 8300000, guid: 9c8f75ff071103e4c9793b328ae7358d, type: 3}
+  - {fileID: 8300000, guid: f8875fc638abf8746a6a88ca753d3581, type: 3}
+  - {fileID: 8300000, guid: 608b7c1fad446f747ba430b872603177, type: 3}
+  - {fileID: 8300000, guid: 8faff1aadfb16034c9514b5fb5d0c014, type: 3}
   source: {fileID: 5257420745255180348}
 --- !u!1001 &306548616741882981
 PrefabInstance:

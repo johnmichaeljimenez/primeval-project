@@ -51,7 +51,7 @@ namespace Primeval.Item
                 
                 if (currentAmount == 1 && playerWeight+itemData.weight > maxWeight)
                 {
-                    player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip);
+                    player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip, true);
                     // print(currentAmount);
                     // print(itemData.weight);
                     // print(playerWeight);
@@ -74,12 +74,12 @@ namespace Primeval.Item
 
                 if (passedAmount == 0)
                 {
-                    player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip);
+                    player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip, true);
                     return;
                 }
 
                 currentAmount -= passedAmount;
-                player.audioPlayerModule.PlaySound(player.inventoryModule.addItemClip);
+                player.audioPlayerModule.PlaySound(player.inventoryModule.addItemClip, true);
 
                 InventoryItem i = new InventoryItem();
                 i.data = itemData;
