@@ -409,6 +409,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1
+  jumpClip: {fileID: 8300000, guid: 2518b7168baeba64d9bd1de6699aab14, type: 3}
+  landClip: {fileID: 8300000, guid: 495e22e8982503b459c6c7d62b4796aa, type: 3}
 --- !u!114 &2990851780789527289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +450,6 @@ MonoBehaviour:
   interactionLayers:
     serializedVersion: 2
     m_Bits: 1537
-  interactionClip: {fileID: 8300000, guid: 4fe81b6d4ca0de24cad8100911ae25b4, type: 3}
 --- !u!114 &3510320277062675836
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,6 +45,8 @@ namespace Primeval.PlayerCharacter
 
         public LayerMask collisionMask;
 
+        public AudioClip jumpClip, landClip;
+
         public override void Initialize()
         {
             previousYPosition = characterController.transform.position.y;
@@ -94,9 +96,14 @@ namespace Primeval.PlayerCharacter
                 movementDirection = playerCharacter.transform.TransformDirection(movementDirection);
 
                 if (Input.GetKeyDown(KeyCode.Space) && playerCharacter.stanceModule.isStanding)
+                {
                     y = jumpForce;
+                    playerCharacter.audioPlayerModule.PlaySound(jumpClip);
+                }
                 else
+                {
                     y = 0;
+                }
             }
             else
             {
@@ -151,8 +158,10 @@ namespace Primeval.PlayerCharacter
                     if (previousYPosition >= -4)
                     {
                         CameraAnimator.instance.LandAnimation();
-                    }else if (previousYPosition >= -6)
+                    }
+                    else if (previousYPosition >= -6)
                     {
+                        playerCharacter.audioPlayerModule.PlaySound(landClip);
                         CameraAnimator.instance.HardLandAnimation();
                     }
                 }

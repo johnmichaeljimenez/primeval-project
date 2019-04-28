@@ -51,12 +51,14 @@ namespace Primeval.Item
                 
                 if (currentAmount == 1 && playerWeight+itemData.weight > maxWeight)
                 {
-                    print(currentAmount);
-                    print(itemData.weight);
-                    print(playerWeight);
+                    player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip);
+                    // print(currentAmount);
+                    // print(itemData.weight);
+                    // print(playerWeight);
                     return;
                 }
 
+                player.audioPlayerModule.PlaySound(player.inventoryModule.addItemClip);
 
                 while (playerWeight < maxWeight && passedAmount < currentAmount)
                 {

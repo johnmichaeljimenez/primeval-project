@@ -39,6 +39,8 @@ namespace Primeval.PlayerCharacter
         int currentEquippedItem;
         public int capacity = 120;
 
+        public AudioClip addItemClip, overCapacityClip;
+
         public override void Initialize()
         {
             base.Initialize();
