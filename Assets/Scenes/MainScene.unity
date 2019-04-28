@@ -2724,6 +2724,7 @@ GameObject:
   - component: {fileID: 1759004518}
   - component: {fileID: 1759004519}
   - component: {fileID: 1759004520}
+  - component: {fileID: 1759004521}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -2819,6 +2820,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abb24cc637375a04587139d5b4ea560f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 0
+--- !u!114 &1759004521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759004513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb467f1470234b43aa0d655ab73597f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0

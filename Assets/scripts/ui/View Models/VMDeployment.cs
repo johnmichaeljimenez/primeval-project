@@ -10,29 +10,75 @@ namespace Primeval.ViewModels
         //altitude
         //target height
         //starting height
+        //status
 
 
-        private string text = "<Type some text>";
+        private float altitude = 0;
 
         [Binding]
-        public string Text
+        public float Altitude
         {
             get
             {
-                return text;
+                return altitude;
             }
             set
             {
-                if (text == value)
+                if (altitude == value)
                 {
                     return; // No change.
                 }
 
-                text = value;
+                altitude = value;
 
-                OnPropertyChanged("Text");
+                OnPropertyChanged("Altitude");
             }
         }
+
+        private string targetHeight = "0.0m";
+
+        [Binding]
+        public string TargetHeight
+        {
+            get
+            {
+                return targetHeight;
+            }
+            set
+            {
+                if (targetHeight == value)
+                {
+                    return; // No change.
+                }
+
+                targetHeight = value;
+
+                OnPropertyChanged("TargetHeight");
+            }
+        }
+
+        private string startingHeight = "0.0m";
+
+        [Binding]
+        public string StartingHeight
+        {
+            get
+            {
+                return startingHeight;
+            }
+            set
+            {
+                if (startingHeight == value)
+                {
+                    return; // No change.
+                }
+
+                startingHeight = value;
+
+                OnPropertyChanged("StartingHeight");
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
