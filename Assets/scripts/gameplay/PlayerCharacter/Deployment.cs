@@ -64,7 +64,7 @@ namespace Primeval.PlayerCharacter
                     time += Time.deltaTime;
                     if (time >= duration)
                     {
-                        time = duration;
+                        time = duration; //TODO: fix end point for non-local players
                         Land();
                     }
 
