@@ -52,7 +52,7 @@ namespace Primeval.ViewModels
             int hk2 = (int)hotkey;
 
             if (hk2 > 0)
-                hk = (hk2+1).ToString();
+                hk = (hk2-48).ToString(); //TODO: change this
 
             this.Hotkey = hk;
         }
