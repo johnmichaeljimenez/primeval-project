@@ -223,7 +223,7 @@ namespace Primeval.PlayerCharacter
                     w = i.data.weight;
                 }
 
-                VMInventory.instance.items.Add(new VMInventoryItem(i.data.itemName, amt, w));
+                VMInventory.instance.items.Add(new VMInventoryItem(i.data.itemName, amt, w, i.data.defaultKeyBinding));
             }
             CalculateFuelCount();
         }
