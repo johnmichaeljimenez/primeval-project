@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Primeval.ViewModels;
 using Primeval.Item;
 
 namespace Primeval.PlayerCharacter
@@ -29,6 +30,8 @@ namespace Primeval.PlayerCharacter
             }
 
             ShowItemModel(null, null);
+            VMWeapon.instance.WeaponName = "";
+            VMWeapon.instance.WeaponAmmunition = "";
         }
 
         public override void OnUpdate()
@@ -50,11 +53,11 @@ namespace Primeval.PlayerCharacter
             {
                 ItemFPSModel v = i.GetComponent<ItemFPSModel>();
                 bool show = v.modelName == n;
-                i.gameObject.SetActive(show);
                 if (show)
                 {
                     activeModel = v;
                     v.referenceInventoryItem = inv;
+                    i.gameObject.SetActive(show);
                     break;
                 }
             }

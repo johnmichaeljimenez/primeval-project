@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Primeval.Data;
+using Primeval.ViewModels;
 using Primeval.PlayerCharacter;
 
 namespace Primeval.Item
@@ -55,21 +56,25 @@ namespace Primeval.Item
 
             SetState(WeaponStates.Ready);
             myPlayer = PlayerCharacter.PlayerCharacter.myPlayer;
+
+            VMWeapon.instance.WeaponName = weaponData.itemName;
+            VMWeapon.instance.WeaponAmmunition = refItem.currentAmmo + "/" + refItem.GetReservedAmmo();
         }
         public virtual void Update()
         {
+            int rs = refItem.GetReservedAmmo();
+
             if (myPlayer)
             {
                 running = myPlayer.movementModule.isRunning && myPlayer.movementModule.runDelay >= 0.3f;
                 grounded = myPlayer.movementModule.isGrounded;
                 moving = myPlayer.movementModule.inputDirection.sqrMagnitude > 0;
 
-                t = aiming? -1 : (!grounded ? 0 : running && moving ? 2 : moving ? 1 : 0);
+                t = aiming ? -1 : (!grounded ? 0 : running && moving ? 2 : moving ? 1 : 0);
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                int rs = itemFPSModel.referenceInventoryItem.GetReservedAmmo();
                 if (rs > 0 && refItem.currentAmmo < weaponData.ammo1Capacity)
                     SetState(WeaponStates.Reload);
             }
@@ -89,11 +94,12 @@ namespace Primeval.Item
             }
 
             CalculateMovementBlend();
+            VMWeapon.instance.WeaponAmmunition = refItem.currentAmmo + "/" + refItem.GetReservedAmmo();
         }
 
         public void CalculateMovementBlend()
         {
-            movementBlend = Mathf.Lerp(movementBlend, t, Time.deltaTime * (aiming? 30 : 5));
+            movementBlend = Mathf.Lerp(movementBlend, t, Time.deltaTime * (aiming ? 30 : 5));
 
             weaponAnimator.SetFloat("movement", movementBlend);
         }
