@@ -216,10 +216,14 @@ namespace Primeval.PlayerCharacter
             foreach (InventoryItem i in itemList)
             {
                 int amt = i.currentAmount;
+                int w = amt * i.data.weight;
                 if (i.data.itemType == ItemTypes.Weapon)
+                {
                     amt = i.currentAmmo;
+                    w = i.data.weight;
+                }
 
-                VMInventory.instance.items.Add(new VMInventoryItem(i.data.itemName, amt));
+                VMInventory.instance.items.Add(new VMInventoryItem(i.data.itemName, amt, w));
             }
             CalculateFuelCount();
         }
