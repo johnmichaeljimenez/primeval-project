@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fb733b973c1e4784da492a4f58a979cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   syncInterval: 0.1
   itemData: {fileID: 11400000, guid: c2a118e436a09814fbbffdf43f629732, type: 2}
   currentAmount: 0
+  maxAmount: 0
 --- !u!54 &7849438875194622666
 Rigidbody:
   m_ObjectHideFlags: 0
