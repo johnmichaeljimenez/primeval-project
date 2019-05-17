@@ -141,6 +141,7 @@ namespace Primeval.PlayerCharacter
             {
                 playerCharacter.inventoryFPSModelModule.ShowItemModel(null, null);
                 respawnTime = 0;
+                playerCharacter.SetInput(false);
             }
         }
 

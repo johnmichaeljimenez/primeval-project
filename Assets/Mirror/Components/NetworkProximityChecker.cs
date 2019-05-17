@@ -39,7 +39,7 @@ namespace Mirror
         //    every entity on the server!
         // -> should be big enough to work in just about all cases
         static Collider[] hitsBuffer3D = new Collider[10000];
-        // static Collider2D[] hitsBuffer2D = new Collider2D[10000];
+        //static Collider2D[] hitsBuffer2D = new Collider2D[10000];
 
         void Update()
         {
@@ -91,26 +91,26 @@ namespace Mirror
                     break;
                 }
 
-                // case CheckMethod.Physics2D:
-                // {
-                //     // cast without allocating GC for maximum performance
-                //     int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, visRange, hitsBuffer2D, castLayers);
-                //     if (hitCount == hitsBuffer2D.Length) Debug.LogWarning("NetworkProximityChecker's OverlapCircle test for " + name + " has filled the whole buffer(" + hitsBuffer2D.Length + "). Some results might have been omitted. Consider increasing buffer size.");
+                case CheckMethod.Physics2D:
+                {
+                    // cast without allocating GC for maximum performance
+                    //int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, visRange, hitsBuffer2D, castLayers);
+                    //if (hitCount == hitsBuffer2D.Length) Debug.LogWarning("NetworkProximityChecker's OverlapCircle test for " + name + " has filled the whole buffer(" + hitsBuffer2D.Length + "). Some results might have been omitted. Consider increasing buffer size.");
 
-                //     for (int i = 0; i < hitCount; i++)
-                //     {
-                //         Collider2D hit = hitsBuffer2D[i];
-                //         // collider might be on pelvis, often the NetworkIdentity is in a parent
-                //         // (looks in the object itself and then parents)
-                //         NetworkIdentity identity = hit.GetComponentInParent<NetworkIdentity>();
-                //         // (if an object has a connectionToClient, it is a player)
-                //         if (identity != null && identity.connectionToClient != null)
-                //         {
-                //             observers.Add(identity.connectionToClient);
-                //         }
-                //     }
-                //     break;
-                // }
+                    //for (int i = 0; i < hitCount; i++)
+                    //{
+                    //    Collider2D hit = hitsBuffer2D[i];
+                    //    // collider might be on pelvis, often the NetworkIdentity is in a parent
+                    //    // (looks in the object itself and then parents)
+                    //    NetworkIdentity identity = hit.GetComponentInParent<NetworkIdentity>();
+                    //    // (if an object has a connectionToClient, it is a player)
+                    //    if (identity != null && identity.connectionToClient != null)
+                    //    {
+                    //        observers.Add(identity.connectionToClient);
+                    //    }
+                    //}
+                    break;
+                }
             }
 
             // always return true when overwriting OnRebuildObservers so that

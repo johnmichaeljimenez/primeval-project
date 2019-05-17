@@ -398,7 +398,7 @@ namespace Mirror
             if (LogFilter.Debug) Debug.Log("Server lost client:" + conn.connectionId);
         }
 
-        static void OnDataReceived(int connectionId, byte[] data)
+        static void OnDataReceived(int connectionId, ArraySegment<byte> data)
         {
             if (connections.TryGetValue(connectionId, out NetworkConnection conn))
             {
@@ -478,8 +478,7 @@ namespace Mirror
 
         public static void SendToClient<T>(int connectionId, T msg) where T : IMessageBase
         {
-            NetworkConnection conn;
-            if (connections.TryGetValue(connectionId, out conn))
+            if (connections.TryGetValue(connectionId, out NetworkConnection conn))
             {
                 conn.Send(msg);
                 return;
