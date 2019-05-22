@@ -40,7 +40,7 @@ namespace Primeval.PlayerCharacter
             if (PhotonNetwork.isMasterClient)
             {
                 hostPlayer = this;
-                NetworkManagerExt.instance.OnStartLevel();
+                // NetworkManagerExt.instance.OnStartLevel();
             }
 
             foreach (PlayerModuleBase i in modules)
@@ -114,15 +114,16 @@ namespace Primeval.PlayerCharacter
 
 
         //[Command]
-        public void CmdInteract(GameObject target)
+        public void CmdInteract(int target)
         {
             photonView.RPC("RpcInteract", PhotonTargets.All, target);
         }
 
         [PunRPC]
-        public void RpcInteract(GameObject target)
+        public void RpcInteract(int target)
         {
-            target.GetComponent<Interactable>().OnInteract(gameObject);
+            GameObject g = PhotonView.Find(target).gameObject;
+            g.GetComponent<Interactable>().OnInteract(gameObject);
         }
 
         //[Command]

@@ -83,12 +83,30 @@ namespace Primeval.PlayerCharacter
     [System.Serializable]
     public class SyncInventoryItem
     {
-        public string itemName;
-        public int amount;
+        public string itemName {get; set;}
+        public int amount {get; set;}
 
-        public int currentAmmo;
+        public int currentAmmo {get; set;}
 
-        public int owner;
+        public int owner {get; set;}
+
+        public static object Deserialize(byte[] data)
+        {
+            // var result = new SyncInventoryItem();
+            // result.itemName = data[0].ToString();
+            // result.amount = (int)data[1];
+            // result.currentAmmo = (int)data[2];
+            // result.owner = (int)data[3];
+            // return result;
+            return data.Deserialize();
+        }
+
+        public static byte[] Serialize(object customType)
+        {
+            // var c = (SyncInventoryItem)customType;
+            // // return new byte[] { Utils.BytesFromString(c.itemName), c.amount, c.currentAmmo, c.owner };
+            return customType.SerializeToByteArray();
+        }
 
         public static SyncInventoryItem ToSync(InventoryItem i)
         {

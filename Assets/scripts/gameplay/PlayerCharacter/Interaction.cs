@@ -47,7 +47,7 @@ namespace Primeval.PlayerCharacter
                 {
                     if (currentInteractable)
                     {
-                        playerCharacter.CmdInteract(currentInteractable.gameObject);
+                        playerCharacter.CmdInteract(currentInteractable.GetComponent<PhotonView>().viewID);
                     }else{
                         Outpost outpost = hitInfo.collider.GetComponentInParent<Outpost>();
                         if (outpost)

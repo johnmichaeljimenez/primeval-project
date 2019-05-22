@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon;
+using ExitGames.Client.Photon;
 
 namespace Primeval.Networking
 {
@@ -9,7 +10,8 @@ namespace Primeval.Networking
     {
         public static bool isHosting
         {
-            get{
+            get
+            {
                 if (!PlayerCharacter.PlayerCharacter.myPlayer)
                     return false;
 
@@ -19,12 +21,31 @@ namespace Primeval.Networking
 
         void Awake()
         {
+            PhotonPeer.RegisterType(typeof(Primeval.PlayerCharacter.SyncInventoryItem), (byte)'W', Primeval.PlayerCharacter.SyncInventoryItem.Serialize, Primeval.PlayerCharacter.SyncInventoryItem.Deserialize);
+
+            print("connecting");
             PhotonNetwork.ConnectUsingSettings("v0.0.1");
         }
 
         void OnJoinedLobby()
         {
+            print("joined");
             PhotonNetwork.JoinRandomRoom();
+        }
+
+        void OnPhotonRandomJoinFailed()
+        {
+            Debug.Log("OnPhotonRandomJoinFailed");
+            PhotonNetwork.CreateRoom(null);
+        }
+
+        void OnJoinedRoom()
+        {
+            print("room");
+
+            PhotonNetwork.Instantiate("Player Character", Vector3.zero, Quaternion.identity, 0);
+            if (PhotonNetwork.isMasterClient)
+                OnStartLevel();
         }
 
 
@@ -55,5 +76,5 @@ namespace Primeval.Networking
         // {
         //     base.OnClientError(conn, errorCode);
         // }
-    } 
+    }
 }

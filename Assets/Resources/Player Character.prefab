@@ -698,7 +698,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   startHeight: 1000
-  networkTransform: {fileID: 0}
+  networkTransform: {fileID: 2033880872514473408}
   duration: 3
   deploySound: {fileID: 8300000, guid: 42dfb4357294b4e0b916bcf563ac04cf, type: 3}
   landingSound: {fileID: 8300000, guid: 8e3b4236a7258471caabb3542eee992b, type: 3}
