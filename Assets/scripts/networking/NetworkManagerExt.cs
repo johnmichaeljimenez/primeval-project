@@ -17,6 +17,16 @@ namespace Primeval.Networking
             }
         }
 
+        void Awake()
+        {
+            PhotonNetwork.ConnectUsingSettings("v0.0.1");
+        }
+
+        void OnJoinedLobby()
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+
 
         public void OnStartLevel()
         {
