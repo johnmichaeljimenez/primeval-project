@@ -91,8 +91,13 @@ namespace Primeval.Item
                 i.owner = player;
                 player.inventoryModule.AddItem(i);
 
-                player.CmdRemove(gameObject, currentAmount);
+                player.CmdRemove(photonView.viewID, currentAmount);
             }
+        }
+
+        void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            
         }
     }
 

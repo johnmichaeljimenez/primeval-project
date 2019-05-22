@@ -363,6 +363,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 399999525139989054}
+  - {fileID: 2033880872514473408}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

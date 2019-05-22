@@ -111,6 +111,10 @@ namespace Primeval.PlayerCharacter
 
 
         //RPCS and COMMANDS
+        void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            
+        }
 
 
         //[Command]
@@ -127,15 +131,15 @@ namespace Primeval.PlayerCharacter
         }
 
         //[Command]
-        public void CmdRemove(GameObject n, int x)
+        public void CmdRemove(int n, int x)
         {
-            RpcRemove(n, x);
-            photonView.RPC("CmdRemove", PhotonTargets.All, n, x);
+            photonView.RPC("RpcRemove", PhotonTargets.All, n, x);
         }
 
         [PunRPC]
-        public void RpcRemove(GameObject g, int amount)
+        public void RpcRemove(int x, int amount)
         {
+            GameObject g = PhotonView.Find(x).gameObject;
             ItemBase n = g.GetComponent<ItemBase>();
             n.currentAmount = amount;
             print("current amount: " + n.currentAmount);
