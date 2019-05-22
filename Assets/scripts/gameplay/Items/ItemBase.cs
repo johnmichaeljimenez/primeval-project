@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using Primeval.PlayerCharacter;
 using Primeval.Data;
+using Photon;
 
 namespace Primeval.Item
 {
-    public class ItemBase : NetworkBehaviour
+    public class ItemBase : PunBehaviour
     {
         public ItemBaseData itemData;
 
@@ -16,21 +16,21 @@ namespace Primeval.Item
 
         Rigidbody rigidbody;
 
-        public override void OnStartLocalPlayer()
-        {
-            Initialize();
-        }
-
         void Start()
         {
             currentAmount = itemData.amount;
             maxAmount = itemData.amount;
+
+            if (photonView.isMine)
+            {
+                Initialize();
+            }
         }
 
         public virtual void Initialize()
         {
             rigidbody = GetComponent<Rigidbody>();
-            rigidbody.isKinematic = !isLocalPlayer;
+            rigidbody.isKinematic = !photonView.isMine;
         }
 
         public virtual void OnUpdate()
@@ -42,14 +42,14 @@ namespace Primeval.Item
         {
             PlayerCharacter.PlayerCharacter player = p.GetComponent<PlayerCharacter.PlayerCharacter>();
 
-            if (player.isLocalPlayer)
+            if (player.photonView.isMine)
             {
                 int playerWeight = player.inventoryModule.currentWeight;
                 int maxWeight = player.inventoryModule.capacity;
                 int passedAmount = 0;
                 int failSafe = 1000;
-                
-                if (currentAmount == 1 && playerWeight+itemData.weight > maxWeight)
+
+                if (currentAmount == 1 && playerWeight + itemData.weight > maxWeight)
                 {
                     player.audioPlayerModule.PlaySound(player.inventoryModule.overCapacityClip, true);
                     // print(currentAmount);

@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 using Primeval.Networking;
 using Primeval.Item;
 
 namespace Primeval.PlayerCharacter
 {
-    public class PlayerCharacter : NetworkBehaviour
+    public class PlayerCharacter : PunBehaviour
     {
         public static PlayerCharacter hostPlayer;
         public static PlayerCharacter myPlayer;
@@ -32,15 +32,15 @@ namespace Primeval.PlayerCharacter
         public Deployment deploymentModule;
         public AudioPlayer audioPlayerModule;
 
-        public override void OnStartLocalPlayer()
+        public void OnStartLocalPlayer()
         {
-            if (isLocalPlayer)
+            if (photonView.isMine)
                 myPlayer = this;
 
-            if (isServer)
+            if (PhotonNetwork.isMasterClient)
             {
                 hostPlayer = this;
-                ((NetworkManagerExt)(NetworkManager.singleton)).OnStartLevel();
+                NetworkManagerExt.instance.OnStartLevel();
             }
 
             foreach (PlayerModuleBase i in modules)
@@ -48,7 +48,7 @@ namespace Primeval.PlayerCharacter
                 i.Initialize();
             }
 
-            gameObject.name = "PC-" + netId.ToString();
+            gameObject.name = "PC-" + photonView.viewID.ToString();
 
             CmdSetScore(0);
             GameManager.DeployPlayer();
@@ -57,11 +57,16 @@ namespace Primeval.PlayerCharacter
         void Awake()
         {
             modules = GetComponentsInChildren<PlayerModuleBase>(true);
+
+            if (photonView.isMine)
+            {
+                OnStartLocalPlayer();
+            }
         }
 
         void OnDestroy()
         {
-            if (isLocalPlayer)
+            if (photonView.isMine)
                 inventoryFPSModelModule.ShowItemModel(null, null);
         }
 
@@ -73,7 +78,7 @@ namespace Primeval.PlayerCharacter
                 if (!i.initialized || !i.isActive)
                     continue;
 
-                if (isLocalPlayer)
+                if (photonView.isMine)
                 {
                     i.OnUpdate();
                 }
@@ -108,25 +113,26 @@ namespace Primeval.PlayerCharacter
         //RPCS and COMMANDS
 
 
-        [Command]
+        //[Command]
         public void CmdInteract(GameObject target)
         {
-            RpcInteract(target);
+            photonView.RPC("RpcInteract", PhotonTargets.All, target);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcInteract(GameObject target)
         {
             target.GetComponent<Interactable>().OnInteract(gameObject);
         }
 
-        [Command]
+        //[Command]
         public void CmdRemove(GameObject n, int x)
         {
             RpcRemove(n, x);
+            photonView.RPC("CmdRemove", PhotonTargets.All, n, x);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcRemove(GameObject g, int amount)
         {
             ItemBase n = g.GetComponent<ItemBase>();
@@ -135,46 +141,46 @@ namespace Primeval.PlayerCharacter
 
             if (amount <= 0)
             {
-                if (isServer)
+                if (PhotonNetwork.isMasterClient)
                 {
-                    NetworkServer.Destroy(g);
+                    PhotonNetwork.Destroy(g);
                 }
             }
         }
 
-        [Command]
+        //[Command]
         public void CmdInflictDamage(int amt, GameObject to)
         {
-            RpcInflictDamage(amt, to);
+            photonView.RPC("RpcInflictDamage", PhotonTargets.All, amt, to);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcInflictDamage(int amt, GameObject to)
         {
             PlayerCharacter p = to.GetComponent<PlayerCharacter>();
-            if (p.isLocalPlayer)
+            if (p.photonView.isMine)
                 p.vitalityModule.CmdDamage(amt);
         }
 
-        [Command]
+        //[Command]
         public void CmdSetScore(int x)
         {
-            RpcSetScore(x);
+            photonView.RPC("RpcSetScore", PhotonTargets.All, x);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcSetScore(int x)
         {
             myScore = x;
         }
 
         //Room Properties
-        [Command]
+        //[Command]
         public void CmdGameTime(float t)
         {
-            RpcGameTime(t);
+            photonView.RPC("RpcGameTime", PhotonTargets.All, t);
         }
-        [ClientRpc]
+        [PunRPC]
         public void RpcGameTime(float t)
         {
             GameManager.gameTime = t;
@@ -182,11 +188,11 @@ namespace Primeval.PlayerCharacter
 
 
 
-        public static PlayerCharacter FindByID(uint x)
+        public static PlayerCharacter FindByID(int x)
         {
             foreach (PlayerCharacter i in GameObject.FindObjectsOfType<PlayerCharacter>())
             {
-                if (i.netId == x)
+                if (i.photonView.viewID == x)
                     return i;
             }
 

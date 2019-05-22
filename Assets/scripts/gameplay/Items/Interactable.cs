@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Primeval.PlayerCharacter;
 using Primeval.Item;
-using Mirror;
 
-public class Interactable : NetworkBehaviour {
+public class Interactable : Photon.MonoBehaviour {
 
 	public void OnInteract(GameObject g)
 	{

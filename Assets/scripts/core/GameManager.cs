@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 using Primeval.Networking;
 using Primeval.PlayerCharacter;
 
@@ -16,7 +16,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void InitializeTime()
     {
         //TODO: synchronize time to clients
-        startTime = (float)NetworkTime.time;
+        startTime = (float)PhotonNetwork.time;
         gameTime = 0;
     }
 
@@ -24,9 +24,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         float t = 0;
 
-        if (NetworkClient.isConnected)
+        if (PhotonNetwork.inRoom)
         {
-            t = (float)(NetworkTime.time - startTime);
+            t = (float)(PhotonNetwork.time - startTime);
                 PlayerCharacter.myPlayer.CmdGameTime(t);
         }
     }

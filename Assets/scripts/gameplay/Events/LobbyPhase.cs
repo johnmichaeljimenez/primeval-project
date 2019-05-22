@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Primeval.PlayerCharacter;
-using Mirror;
 
 namespace Primeval.Events
 {

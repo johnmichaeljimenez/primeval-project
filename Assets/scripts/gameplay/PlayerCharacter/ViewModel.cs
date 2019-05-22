@@ -17,12 +17,12 @@ namespace Primeval.PlayerCharacter
             // {
             //     Collider c = i.GetComponent<Collider>();
             //     if (c)
-            //         i.enabled = !playerCharacter.isLocalPlayer;
+            //         i.enabled = !playerCharacter.photonView.isMine;
 
-            //     i.gameObject.layer = LayerMask.NameToLayer(playerCharacter.isLocalPlayer? layerInvisibleName : layerInvisibleName);
+            //     i.gameObject.layer = LayerMask.NameToLayer(playerCharacter.photonView.isMine? layerInvisibleName : layerInvisibleName);
             // }
 
-            playerModelTransform.gameObject.SetActive(!isLocalPlayer);
+            playerModelTransform.gameObject.SetActive(!photonView.isMine);
         }
 
         public override void OnUpdate()

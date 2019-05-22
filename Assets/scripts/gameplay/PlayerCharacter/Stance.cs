@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 
 namespace Primeval.PlayerCharacter
 {
@@ -26,13 +26,13 @@ namespace Primeval.PlayerCharacter
                 CmdChangeStance(isStanding ? Stances.Crouch : Stances.Stand);
         }
 
-        [Command]
+        //[Command]
         public void CmdChangeStance(Stances s)
         {
-            RpcChangeStance(s);
+            photonView.RPC("RpcChangeStance", PhotonTargets.All, s);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcChangeStance(Stances s)
         {
             currentStance = s;

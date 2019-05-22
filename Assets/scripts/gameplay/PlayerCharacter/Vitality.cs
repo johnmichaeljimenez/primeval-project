@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 using Primeval.ViewModels;
 
 namespace Primeval.PlayerCharacter
@@ -55,7 +55,7 @@ namespace Primeval.PlayerCharacter
         {
             base.OnUpdate();
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
                 if (isDead)
                 {
@@ -75,7 +75,7 @@ namespace Primeval.PlayerCharacter
         public void Damage(int amount)
         {
             //TODO: tps damage effect
-            if (!isLocalPlayer)
+            if (!photonView.isMine)
                 return;
 
             int output = GetArmorReduction(amount);
@@ -91,7 +91,7 @@ namespace Primeval.PlayerCharacter
         public void HealHitPoints(int amount)
         {
             //TODO: heal effect
-            if (!isLocalPlayer)
+            if (!photonView.isMine)
                 return;
                 
             currentHitPoints += amount;
@@ -101,7 +101,7 @@ namespace Primeval.PlayerCharacter
         public void HealArmorPoints(int amount)
         {
             //TODO: heal effect
-            if (!isLocalPlayer)
+            if (!photonView.isMine)
                 return;
                 
             currentArmorPoints += amount;
@@ -115,7 +115,7 @@ namespace Primeval.PlayerCharacter
 
             if (currentHitPoints <= 0)
             {
-                if (isLocalPlayer)
+                if (photonView.isMine)
                     CmdKillPlayer();
             }
         }
@@ -137,7 +137,7 @@ namespace Primeval.PlayerCharacter
             //TODO: animate death
             playerCharacter.characterAnimatorModule.SetRagdoll(true);
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
                 playerCharacter.inventoryFPSModelModule.ShowItemModel(null, null);
                 respawnTime = 0;
@@ -149,7 +149,7 @@ namespace Primeval.PlayerCharacter
         {
             isDead = false;
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
                 currentHitPoints = maxHitPoints;
                 currentArmorPoints = maxArmorPoints / 4;
@@ -172,38 +172,37 @@ namespace Primeval.PlayerCharacter
         }
 
 
-        [Command]
         public void CmdDamage(int amt)
         {
-            RpcDamage(amt);
+            photonView.RPC("RpcDamage", PhotonTargets.All, amt);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcDamage(int amt)
         {
             Damage(amt);
         }
 
-        [Command]
+        //[Command]
         public void CmdKillPlayer()
         {
-            RpcKillPlayer();
+            photonView.RPC("RpcKillPlayer", PhotonTargets.All);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcKillPlayer()
         {
             OnKilled();
         }
         
 
-        [Command]
+        //[Command]
         public void CmdRespawn()
         {
-            RpcRespawn();
+            photonView.RPC("RpcRespawn", PhotonTargets.All);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcRespawn()
         {
             OnRespawn();

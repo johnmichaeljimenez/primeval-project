@@ -4,7 +4,7 @@ using UnityEngine;
 using Primeval.ViewModels;
 using Primeval.Item;
 using Primeval.Data;
-using Mirror;
+using Photon;
 
 namespace Primeval.PlayerCharacter
 {
@@ -88,7 +88,7 @@ namespace Primeval.PlayerCharacter
 
         public int currentAmmo;
 
-        public uint owner;
+        public int owner;
 
         public static SyncInventoryItem ToSync(InventoryItem i)
         {
@@ -96,7 +96,7 @@ namespace Primeval.PlayerCharacter
             s.itemName = i.data.itemName;
             s.amount = i.currentAmount;
             s.currentAmmo = i.currentAmmo;
-            s.owner = i.owner.netId;
+            s.owner = i.owner.photonView.viewID;
             return s;
         }
 

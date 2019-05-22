@@ -21,7 +21,7 @@ namespace Primeval.PlayerCharacter
         {
             base.Initialize();
 
-            if (playerCharacter.isLocalPlayer)
+            if (playerCharacter.photonView.isMine)
                 CameraManager.instance.SetTarget(cameraPivotTransform);
 
             normalizedAngle = Vector2.zero;
@@ -32,7 +32,7 @@ namespace Primeval.PlayerCharacter
         {
             if (!playerCharacter)
                 CameraManager.instance.SetTarget(null);
-            else if (playerCharacter.isLocalPlayer)
+            else if (playerCharacter.photonView.isMine)
                 CameraManager.instance.SetTarget(null);
         }
 

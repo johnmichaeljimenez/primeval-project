@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 using Primeval.Networking;
 
 namespace Primeval.PlayerCharacter
@@ -24,7 +24,7 @@ namespace Primeval.PlayerCharacter
 
         public void PlaySound(AudioClip clip, bool networked = false)
         {
-            if (networked && isLocalPlayer)
+            if (networked && photonView.isMine)
             {
                 CmdPlay(clip.name);
                 return;
@@ -32,13 +32,13 @@ namespace Primeval.PlayerCharacter
             source.PlayOneShot(clip);
         }
 
-        [Command]
+        //[Command]
         public void CmdPlay(string n)
         {
-            RpcPlay(n);
+            photonView.RPC("RpcPlay", PhotonTargets.All, n);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcPlay(string n)
         {
             foreach (AudioClip i in soundBank)

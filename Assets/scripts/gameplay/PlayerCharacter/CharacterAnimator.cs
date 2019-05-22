@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 
 namespace Primeval.PlayerCharacter
 {
@@ -117,7 +117,7 @@ namespace Primeval.PlayerCharacter
         {
             base.OnUpdate();
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
 
                 float y = playerCharacter.movementModule.inputDirection.z;
@@ -160,13 +160,14 @@ namespace Primeval.PlayerCharacter
             playerHandIK.SetIKHand(currentWeaponTPS > 0, h);
         }
 
-        [Command]
+        //[Command]
         public void CmdAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly, int w)
         {
-            RpcAnimate(mx, my, st, wp, oa, lx, ly, w);
+            // RpcAnimate(mx, my, st, wp, oa, lx, ly, w);
+            photonView.RPC("RpcAnimate", PhotonTargets.All, mx, my, st, wp, oa, lx, ly, w);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcAnimate(float mx, float my, int st, int wp, bool oa, float lx, float ly, int w)
         {
             movementX = mx;
@@ -176,7 +177,7 @@ namespace Primeval.PlayerCharacter
             lookX = lx;
             lookY = ly;
 
-            if (!isLocalPlayer)
+            if (!photonView.isMine)
                 currentWeaponTPS = w;
 
 
@@ -187,13 +188,13 @@ namespace Primeval.PlayerCharacter
 
         
 
-        [Command]
+        //[Command]
         public void CmdAnimatorTrigger(string n)
         {
-            RpcAnimatorTrigger(n);
+            photonView.RPC("RpcAnimatorTrigger", PhotonTargets.All, n);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcAnimatorTrigger(string n)
         {
             animator.SetTrigger(n);

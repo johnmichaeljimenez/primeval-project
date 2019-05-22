@@ -4,7 +4,7 @@ using UnityEngine;
 using Primeval.ViewModels;
 using Primeval.Item;
 using Primeval.Data;
-using Mirror;
+using Photon;
 
 namespace Primeval.PlayerCharacter
 {
@@ -21,7 +21,7 @@ namespace Primeval.PlayerCharacter
             {
                 mFuelCount = value;
 
-                if (playerCharacter.isLocalPlayer)
+                if (playerCharacter.photonView.isMine)
                 {
                     VMFuelCount.instance.Text = mFuelCount.ToString();
                 }
@@ -135,7 +135,7 @@ namespace Primeval.PlayerCharacter
                 }
             }
 
-            if (playerCharacter.isLocalPlayer)
+            if (playerCharacter.photonView.isMine)
             {
                 RefreshList();
             }
@@ -181,7 +181,7 @@ namespace Primeval.PlayerCharacter
                     itemList.RemoveAt(n);
             }
 
-            if (playerCharacter.isLocalPlayer)
+            if (playerCharacter.photonView.isMine)
             {
                 RefreshList();
             }
@@ -210,7 +210,7 @@ namespace Primeval.PlayerCharacter
         public void RefreshList()
         {
             CalculateWeight();
-            CmdSyncInventory(SyncInventoryItem.ToSyncList(itemList.ToArray()).ToArray(), playerCharacter.netId);
+            CmdSyncInventory(SyncInventoryItem.ToSyncList(itemList.ToArray()).ToArray(), playerCharacter.photonView.viewID);
 
             VMInventory.instance.items.Clear();
             foreach (InventoryItem i in itemList)
@@ -261,7 +261,7 @@ namespace Primeval.PlayerCharacter
 
             InventoryItem i = itemList[index];
 
-            if (playerCharacter.isLocalPlayer)
+            if (playerCharacter.photonView.isMine)
             {
                 playerCharacter.inventoryFPSModelModule.ShowItemModel(i.data.itemName, i);
             }
@@ -296,16 +296,16 @@ namespace Primeval.PlayerCharacter
 
 
 
-        [Command]
-        public void CmdSyncInventory(SyncInventoryItem[] i, uint id)
+        //[Command]
+        public void CmdSyncInventory(SyncInventoryItem[] i, int id)
         {
-            RpcSyncInventory(i, id);
+            photonView.RPC("RpcSyncInventory", PhotonTargets.All, i, id);
         }
 
-        [ClientRpc]
-        public void RpcSyncInventory(SyncInventoryItem[] i, uint id)
+        [PunRPC]
+        public void RpcSyncInventory(SyncInventoryItem[] i, int id)
         {
-            if (!playerCharacter.isLocalPlayer)
+            if (!playerCharacter.photonView.isMine)
             {
                 itemList = SyncInventoryItem.FromSyncList(i, allItemData.ToArray());
                 CalculateFuelCount();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Primeval.PlayerCharacter;
-using Mirror;
+using Photon;
 using Primeval.ViewModels;
 
 namespace Primeval.PlayerCharacter
@@ -25,7 +25,7 @@ namespace Primeval.PlayerCharacter
 
         public float startHeight;
 
-        public NetworkTransform networkTransform;
+        public PhotonTransformView networkTransform;
 
         public float duration;
         public float time { get; private set; }
@@ -46,7 +46,7 @@ namespace Primeval.PlayerCharacter
         {
             if (disabled)
             {
-                if (isLocalPlayer)
+                if (photonView.isMine)
                 {
                     if (Input.GetKeyDown(KeyCode.P))
                         Deploy(Vector2.zero);//TODO: remove this (test only)
@@ -56,7 +56,7 @@ namespace Primeval.PlayerCharacter
 
             if (dropping)
             {
-                if (isLocalPlayer)
+                if (photonView.isMine)
                 {
                     float t = gravityCurve.Evaluate(time / duration);
                     altitude = Mathf.Lerp(startHeight, hitInfo.point.y, t);
@@ -73,7 +73,7 @@ namespace Primeval.PlayerCharacter
             }
             else
             {
-                if (isLocalPlayer)
+                if (photonView.isMine)
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
@@ -99,7 +99,7 @@ namespace Primeval.PlayerCharacter
             networkTransform.enabled = false;
             transform.position = GetPoint(startHeight);
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
                 playerCharacter.audioPlayerModule.PlaySound(deploySound, true);
                 Physics.Raycast(GetPoint(startHeight / 2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
@@ -113,13 +113,13 @@ namespace Primeval.PlayerCharacter
 
         public void OnLand()
         {
-            if (isLocalPlayer)
+            if (photonView.isMine)
                 transform.position = GetPoint(hitInfo.point.y);
             print("landing: " + playerCharacter.name);
             dropping = false;
             //TODO: play impact
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
                 playerCharacter.audioPlayerModule.PlaySound(landingSound, true);
             }
@@ -134,7 +134,7 @@ namespace Primeval.PlayerCharacter
             dropPodModel.gameObject.SetActive(false); //TODO: animate
             playerCharacter.SetInput(true);
 
-            if (isLocalPlayer)
+            if (photonView.isMine)
             {
                 playerCharacter.audioPlayerModule.PlaySound(openSound, true);
             }
@@ -155,55 +155,55 @@ namespace Primeval.PlayerCharacter
             CmdOpen();
         }
 
-        [Command]
+        //[Command]
         public void CmdDeploy(Vector2 p)
         {
-            RpcDeploy(p);
+            photonView.RPC("RpcDeploy", PhotonTargets.All, p);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcDeploy(Vector2 p)
         {
             OnDeploy(p);
         }
 
 
-        [Command]
+        //[Command]
         public void CmdLand()
         {
-            RpcLand();
+            photonView.RPC("RpcLand", PhotonTargets.All);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcLand()
         {
             OnLand();
         }
 
 
-        [Command]
+        //[Command]
         public void CmdOpen()
         {
-            RpcOpen();
+            photonView.RPC("RpcOpen", PhotonTargets.All);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcOpen()
         {
             OnOpen();
         }
 
 
-        [Command]
+        //[Command]
         public void CmdPosition(Vector3 p)
         {
-            RpcPosition(p);
+            photonView.RPC("RpcPosition", PhotonTargets.All, p);
         }
 
-        [ClientRpc]
+        [PunRPC]
         public void RpcPosition(Vector3 p)
         {
-            if (!isLocalPlayer)
+            if (!photonView.isMine)
             {
                 transform.position = p;
             }

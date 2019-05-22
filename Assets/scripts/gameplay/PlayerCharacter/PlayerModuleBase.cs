@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 
 namespace Primeval.PlayerCharacter
 {
-    public class PlayerModuleBase : NetworkBehaviour
+    public class PlayerModuleBase : PunBehaviour
     {
 
         private PlayerCharacter _playerCharacter;

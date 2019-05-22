@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon;
 using Primeval.PlayerCharacter;
 
 public class ItemSpawner : GenericSingletonClass<ItemSpawner>
@@ -31,9 +31,7 @@ public class ItemSpawner : GenericSingletonClass<ItemSpawner>
 
             Vector3 tp = Random.onUnitSphere*0.8f;
 
-            GameObject g = Instantiate(n, t.position+tp, Quaternion.identity);
-
-            NetworkServer.Spawn(g);//, PlayerCharacter.hostPlayer.gameObject);
+            PhotonNetwork.InstantiateSceneObject(n.name, t.position+tp, Quaternion.identity, 0, null);//, PlayerCharacter.hostPlayer.gameObject);
         }
     }
 
