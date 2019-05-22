@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -178,7 +178,7 @@ MonoBehaviour:
     value: 360
   sampleCount:
     overrideState: 1
-    value: 32
+    value: 16
 --- !u!114 &5012571404825836788
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -241,7 +241,7 @@ MonoBehaviour:
     value: 1
   mode:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 1
     value: 0.66
@@ -270,8 +270,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0.25
   quality:
-    overrideState: 0
-    value: 2
+    overrideState: 1
+    value: 0
 --- !u!114 &6141576178658126267
 MonoBehaviour:
   m_ObjectHideFlags: 3
