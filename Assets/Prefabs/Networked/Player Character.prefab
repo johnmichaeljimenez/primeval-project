@@ -167,8 +167,8 @@ GameObject:
   - component: {fileID: 399999525139989054}
   - component: {fileID: 399999525139989053}
   - component: {fileID: 5257420745255180348}
-  - component: {fileID: 1337203444}
-  - component: {fileID: 1337203445}
+  - component: {fileID: 7213974283160955919}
+  - component: {fileID: 2033880872514473408}
   - component: {fileID: 5628510822567083448}
   - component: {fileID: 2990851780789527289}
   - component: {fileID: 1855199040075582587}
@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c361f4a9e3c8c40812828539eb6b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   stanceModule: {fileID: 1628381672876429553}
   inventoryModule: {fileID: 6546291706182100089}
   inventoryFPSModelModule: {fileID: 2129538831845262535}
@@ -342,7 +341,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1337203444
+--- !u!114 &7213974283160955919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -351,12 +350,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 399999525139989051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  compressRotation: 1
---- !u!114 &1337203445
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 1
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 399999525139989054}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &2033880872514473408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,13 +377,75 @@ MonoBehaviour:
   m_GameObject: {fileID: 399999525139989051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverOnly: 0
-  localPlayerAuthority: 1
-  m_AssetId: ebc1da89bec2488419908307acc6a960
-  m_SceneId: 0
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!114 &5628510822567083448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6eeebbfbd6501249bc2063dec1cae1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   characterController: {fileID: 399999525139989053}
@@ -423,7 +496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475743a9afba15944b0cbc2e141552ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   bodyTransform: {fileID: 399999525139989052}
@@ -443,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52f5b2f71649bb4da60501926ced4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   interactionDistance: 3
@@ -462,7 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10089b4c77668c34fa3b4405f12c73e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   playerModelTransform: {fileID: 4301462828620385096}
@@ -480,7 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a1dae69fb7a8340965f37f7c55ab0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   interrupt: 0
@@ -497,7 +566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022753b8a825d9f4b865a459608dfda3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
 --- !u!114 &6546291706182100089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570aa920c45e3fa4d8cf697f759c215a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   allItemData:
@@ -536,7 +603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0798acdf1601d4ea854b1d269bfbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   activeModel: {fileID: 0}
@@ -552,7 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3eea0b76671184884e812c409116d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   maxHitPoints: 100
@@ -571,7 +636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4602f0ec3f116140a8b6d5c695dd7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
 --- !u!114 &3388626421548309100
@@ -586,7 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7792a7ee54ef1c645aa2124319aa45e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   animator: {fileID: 4301462828627387564}
@@ -604,7 +667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48aefb763f4d2984aad26fe16a692619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 1
   initialized: 0
   dropPodModel: {fileID: 5223278815382890991}
@@ -636,7 +698,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   startHeight: 1000
-  networkTransform: {fileID: 1337203444}
+  networkTransform: {fileID: 0}
   duration: 3
   deploySound: {fileID: 8300000, guid: 42dfb4357294b4e0b916bcf563ac04cf, type: 3}
   landingSound: {fileID: 8300000, guid: 8e3b4236a7258471caabb3542eee992b, type: 3}
@@ -653,7 +715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975975392e205b8428ae148284ac983e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncInterval: 0.1
   isActive: 0
   initialized: 0
   soundBank:
