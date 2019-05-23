@@ -155,7 +155,7 @@ namespace Primeval.Item
                     if (!p)
                         return;
 
-                    PlayerCharacter.PlayerCharacter.myPlayer.CmdInflictDamage(weaponData.damage, p.gameObject);
+                    PlayerCharacter.PlayerCharacter.myPlayer.CmdInflictDamage(weaponData.damage, p.photonView.viewID);
                 }
             }
         }

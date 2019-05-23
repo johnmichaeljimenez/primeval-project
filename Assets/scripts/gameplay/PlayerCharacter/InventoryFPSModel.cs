@@ -18,22 +18,10 @@ namespace Primeval.PlayerCharacter
         {
             base.Initialize();
 
-            viewModelContainer = CameraManager.instance.itemFPSContainer;
-            viewModels = new Dictionary<string, ItemFPSModel>();
-
-            modelList = new List<Transform>();
-            foreach (Transform i in viewModelContainer)
-            {
-                ItemFPSModel v = i.GetComponent<ItemFPSModel>();
-                viewModels.Add(v.modelName, v);
-                modelList.Add(i);
-            }
-
             ShowItemModel(null, null);
             VMWeapon.instance.WeaponName = "";
             VMWeapon.instance.WeaponAmmunition = "";
         }
-
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -43,6 +31,20 @@ namespace Primeval.PlayerCharacter
         {
             if (inv == null)
                 activeModel = null;
+
+            if (modelList == null)
+            {
+                viewModelContainer = CameraManager.instance.itemFPSContainer;
+                viewModels = new Dictionary<string, ItemFPSModel>();
+
+                modelList = new List<Transform>();
+                foreach (Transform i in viewModelContainer)
+                {
+                    ItemFPSModel v = i.GetComponent<ItemFPSModel>();
+                    viewModels.Add(v.modelName, v);
+                    modelList.Add(i);
+                }
+            }
 
             foreach (Transform i in modelList)
             {

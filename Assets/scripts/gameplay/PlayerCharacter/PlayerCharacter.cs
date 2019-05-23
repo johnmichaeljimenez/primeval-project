@@ -66,8 +66,8 @@ namespace Primeval.PlayerCharacter
 
         void OnDestroy()
         {
-            if (photonView.isMine)
-                inventoryFPSModelModule.ShowItemModel(null, null);
+            // if (photonView.isMine)
+            //     inventoryFPSModelModule.ShowItemModel(null, null);
         }
 
 
@@ -154,14 +154,15 @@ namespace Primeval.PlayerCharacter
         }
 
         //[Command]
-        public void CmdInflictDamage(int amt, GameObject to)
+        public void CmdInflictDamage(int amt, int to)
         {
             photonView.RPC("RpcInflictDamage", PhotonTargets.All, amt, to);
         }
 
         [PunRPC]
-        public void RpcInflictDamage(int amt, GameObject to)
+        public void RpcInflictDamage(int amt, int g)
         {
+            GameObject to = PhotonView.Find(g).gameObject;
             PlayerCharacter p = to.GetComponent<PlayerCharacter>();
             if (p.photonView.isMine)
                 p.vitalityModule.CmdDamage(amt);
