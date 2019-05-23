@@ -36,7 +36,7 @@ namespace Primeval.PlayerCharacter
 
         public List<ItemBaseData> allItemData;
         public List<InventoryItem> itemList = new List<InventoryItem>();
-        int currentEquippedItem;
+        public int currentEquippedItem;
         public int capacity = 120;
 
         public AudioClip addItemClip, overCapacityClip;
