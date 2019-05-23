@@ -29,6 +29,7 @@ namespace Primeval.PlayerCharacter
 
         public void ShowItemModel(string n, InventoryItem inv)
         {
+            //TODO: fix hidden weapon on respawn
             if (inv == null)
                 activeModel = null;
 

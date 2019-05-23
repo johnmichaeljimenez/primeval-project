@@ -385,8 +385,8 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
+    InterpolateOption: 1
+    InterpolateMoveTowardsSpeed: 3
     InterpolateLerpSpeed: 1
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
@@ -698,9 +698,9 @@ MonoBehaviour:
   dropCollisionMask:
     serializedVersion: 2
     m_Bits: 1
-  startHeight: 1000
+  startHeight: 100
   networkTransform: {fileID: 2033880872514473408}
-  duration: 3
+  duration: 5
   deploySound: {fileID: 8300000, guid: 42dfb4357294b4e0b916bcf563ac04cf, type: 3}
   landingSound: {fileID: 8300000, guid: 8e3b4236a7258471caabb3542eee992b, type: 3}
   openSound: {fileID: 8300000, guid: e177cc5b807bde04799a1d18b855b789, type: 3}

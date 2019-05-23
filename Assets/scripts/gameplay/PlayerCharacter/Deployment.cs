@@ -19,6 +19,7 @@ namespace Primeval.PlayerCharacter
         public LayerMask dropCollisionMask;
 
         RaycastHit hitInfo;
+        Vector3 dropPoint;
 
         public float altitude
         { get; private set; }
@@ -56,10 +57,10 @@ namespace Primeval.PlayerCharacter
 
             if (dropping)
             {
-                if (photonView.isMine)
+                if (photonView.isMine && time < duration)
                 {
                     float t = gravityCurve.Evaluate(time / duration);
-                    altitude = Mathf.Lerp(startHeight, hitInfo.point.y, t);
+                    altitude = Mathf.Lerp(startHeight, dropPoint.y, t);
                     VMDeployment.instance.Altitude = t;
                     time += Time.deltaTime;
                     if (time >= duration)
@@ -67,8 +68,11 @@ namespace Primeval.PlayerCharacter
                         time = duration; //TODO: fix end point for non-local players
                         Land();
                     }
-
-                    CmdPosition(GetPoint(altitude));
+                    else{
+                        transform.position = GetPoint(altitude);
+                    }
+                    
+                    time = Mathf.Clamp(time, 0, duration);
                 }
             }
             else
@@ -77,6 +81,7 @@ namespace Primeval.PlayerCharacter
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
+                        networkTransform.enabled = true;
                         CmdOpen();
                     }
                 }
@@ -96,15 +101,17 @@ namespace Primeval.PlayerCharacter
             disabled = false;
             dropping = true;
 
-            networkTransform.enabled = false;
             transform.position = GetPoint(startHeight);
 
             if (photonView.isMine)
             {
+                networkTransform.enabled = false;
                 playerCharacter.audioPlayerModule.PlaySound(deploySound, true);
                 Physics.Raycast(GetPoint(startHeight / 2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
-                print("target location: " + GetPoint(hitInfo.point.y));
-                VMDeployment.instance.TargetHeight = hitInfo.point.y.ToString("F1");
+                CmdStartDrop(hitInfo.point);
+                print("start location: " + GetPoint(startHeight/2));
+                print("target location: " + GetPoint(dropPoint.y));
+                VMDeployment.instance.TargetHeight = dropPoint.y.ToString("F1");
                 VMDeployment.instance.StartingHeight = startHeight.ToString("F1");
             }
             dropPodModel.gameObject.SetActive(true);
@@ -114,7 +121,9 @@ namespace Primeval.PlayerCharacter
         public void OnLand()
         {
             if (photonView.isMine)
-                transform.position = GetPoint(hitInfo.point.y);
+            {
+                transform.position = GetPoint(dropPoint.y);
+            }
             print("landing: " + playerCharacter.name);
             dropping = false;
             //TODO: play impact
@@ -168,6 +177,18 @@ namespace Primeval.PlayerCharacter
         }
 
 
+        public void CmdStartDrop(Vector3 dest)
+        {
+            photonView.RPC("RpcStartDrop", PhotonTargets.All, dest);
+        }
+
+        [PunRPC]
+        public void RpcStartDrop(Vector3 dest)
+        {
+            dropPoint = dest;
+        }
+
+
         //[Command]
         public void CmdLand()
         {
@@ -191,22 +212,6 @@ namespace Primeval.PlayerCharacter
         public void RpcOpen()
         {
             OnOpen();
-        }
-
-
-        //[Command]
-        public void CmdPosition(Vector3 p)
-        {
-            photonView.RPC("RpcPosition", PhotonTargets.All, p);
-        }
-
-        [PunRPC]
-        public void RpcPosition(Vector3 p)
-        {
-            if (!photonView.isMine)
-            {
-                transform.position = p;
-            }
         }
     }
 }

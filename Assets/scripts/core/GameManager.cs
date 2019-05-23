@@ -15,7 +15,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void InitializeTime()
     {
-        //TODO: synchronize time to clients
+        //TODO: fix time bug on non-master clients
         startTime = (float)PhotonNetwork.time;
         gameTime = 0;
     }
