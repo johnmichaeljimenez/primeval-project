@@ -71,10 +71,11 @@ namespace Primeval.PlayerCharacter
                         time = duration;
                         Land();
                     }
-                    else{
+                    else
+                    {
                         transform.position = GetPoint(altitude);
                     }
-                    
+
                     time = Mathf.Clamp(time, 0, duration);
                 }
             }
@@ -112,7 +113,7 @@ namespace Primeval.PlayerCharacter
                 playerCharacter.audioPlayerModule.PlaySound(deploySound, true);
                 Physics.Raycast(GetPoint(startHeight / 2), Vector3.down, out hitInfo, startHeight, dropCollisionMask);
                 CmdStartDrop(hitInfo.point);
-                print("start location: " + GetPoint(startHeight/2));
+                print("start location: " + GetPoint(startHeight / 2));
                 print("target location: " + GetPoint(dropPoint.y));
                 VMDeployment.instance.TargetHeight = dropPoint.y.ToString("F1");
                 VMDeployment.instance.StartingHeight = startHeight.ToString("F1");
@@ -123,32 +124,34 @@ namespace Primeval.PlayerCharacter
 
         public void OnLand()
         {
-            if (photonView.isMine)
-            {
-                transform.position = GetPoint(dropPoint.y);
-            }
             print("landing: " + playerCharacter.name);
             dropping = false;
             //TODO: play impact
 
             if (photonView.isMine)
             {
+                transform.position = GetPoint(dropPoint.y);
                 playerCharacter.audioPlayerModule.PlaySound(landingSound, true);
-            }
 
-            PlayerCharacter[] p = GameObject.FindObjectsOfType<PlayerCharacter>();
-            for (int i = p.Length - 1; i >= 0 ; i--)
-            {
-                if (p[i] == PlayerCharacter.myPlayer)
-                    continue;
-
-                PlayerCharacter j = p[i];
-                float d = (j.transform.position - playerCharacter.transform.position).sqrMagnitude;
-                if (d <= impactRadius * impactRadius)
+                PlayerCharacter[] p = GameObject.FindObjectsOfType<PlayerCharacter>();
+                for (int i = p.Length - 1; i >= 0; i--)
                 {
-                    PlayerCharacter.myPlayer.CmdInflictDamage(impactDamage, j.photonView.viewID);
+                    PlayerCharacter j = p[i];
+                    if (j.photonView.isMine)
+                    {
+                        print("cannot impact damage self");
+                        continue;
+                    }
+
+                    float d = (j.transform.position - playerCharacter.transform.position).sqrMagnitude;
+                    if (d <= impactRadius * impactRadius)
+                    {
+                        print("impact damage: " + j.photonView.isMine);
+                        playerCharacter.CmdInflictDamage(impactDamage, j.photonView.viewID);
+                    }
                 }
             }
+
         }
 
         public void OnOpen()

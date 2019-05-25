@@ -84,7 +84,7 @@ namespace Primeval.PlayerCharacter
             OnChangeHitpoints();
             OnChangeArmorPoints();
 
-            
+
             //TODO: stagger effect
         }
 
@@ -93,17 +93,17 @@ namespace Primeval.PlayerCharacter
             //TODO: heal effect
             if (!photonView.isMine)
                 return;
-                
+
             currentHitPoints += amount;
             OnChangeHitpoints();
         }
-        
+
         public void HealArmorPoints(int amount)
         {
             //TODO: heal effect
             if (!photonView.isMine)
                 return;
-                
+
             currentArmorPoints += amount;
             OnChangeArmorPoints();
         }
@@ -111,12 +111,14 @@ namespace Primeval.PlayerCharacter
         public void OnChangeHitpoints()
         {
             currentHitPoints = Mathf.Clamp(currentHitPoints, 0, maxHitPoints);
-            VMVitality.instance.HP = currentHitPoints.ToString();
 
-            if (currentHitPoints <= 0)
+            if (photonView.isMine)
             {
-                if (photonView.isMine)
+                VMVitality.instance.HP = currentHitPoints.ToString();
+                if (currentHitPoints <= 0)
+                {
                     CmdKillPlayer();
+                }
             }
         }
 
@@ -159,7 +161,7 @@ namespace Primeval.PlayerCharacter
                 GameManager.DeployPlayer();
             }
 
-            
+
             //TODO: animate respawn
             playerCharacter.characterAnimatorModule.SetRagdoll(false);
         }
@@ -194,7 +196,7 @@ namespace Primeval.PlayerCharacter
         {
             OnKilled();
         }
-        
+
 
         //[Command]
         public void CmdRespawn()
