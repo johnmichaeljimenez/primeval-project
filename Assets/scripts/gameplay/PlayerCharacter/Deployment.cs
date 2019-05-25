@@ -33,6 +33,9 @@ namespace Primeval.PlayerCharacter
 
         public AudioClip deploySound, landingSound, openSound;
 
+        public int impactDamage;
+        public float impactRadius;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -65,7 +68,7 @@ namespace Primeval.PlayerCharacter
                     time += Time.deltaTime;
                     if (time >= duration)
                     {
-                        time = duration; //TODO: fix end point for non-local players
+                        time = duration;
                         Land();
                     }
                     else{

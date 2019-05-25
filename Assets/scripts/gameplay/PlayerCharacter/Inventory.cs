@@ -171,7 +171,6 @@ namespace Primeval.PlayerCharacter
 
         public void RemoveItem(InventoryItem x, int amount = 1)
         {
-            //TODO: disable weapon view on remove
             ItemFPSModel m = PlayerCharacter.myPlayer.inventoryFPSModelModule.activeModel;
             if (m)
             {
