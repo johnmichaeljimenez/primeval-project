@@ -135,6 +135,20 @@ namespace Primeval.PlayerCharacter
             {
                 playerCharacter.audioPlayerModule.PlaySound(landingSound, true);
             }
+
+            PlayerCharacter[] p = GameObject.FindObjectsOfType<PlayerCharacter>();
+            for (int i = p.Length - 1; i >= 0 ; i--)
+            {
+                if (p[i] == PlayerCharacter.myPlayer)
+                    continue;
+
+                PlayerCharacter j = p[i];
+                float d = (j.transform.position - playerCharacter.transform.position).sqrMagnitude;
+                if (d <= impactRadius * impactRadius)
+                {
+                    PlayerCharacter.myPlayer.CmdInflictDamage(impactDamage, j.photonView.viewID);
+                }
+            }
         }
 
         public void OnOpen()
