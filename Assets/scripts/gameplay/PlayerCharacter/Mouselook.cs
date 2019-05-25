@@ -10,11 +10,13 @@ namespace Primeval.PlayerCharacter
         public Transform bodyTransform;
         public Transform cameraPivotTransform;
 
-        public Transform standPivotTransform, crouchPivotTransform;
+        public Transform standPivotTransform, crouchPivotTransform, fpsPivotTransform;
 
         public Vector2 mouseSensitivity;
 
         public Vector2 normalizedAngle { get; private set; }
+
+        public bool canControl;
 
 
         public override void Initialize()
@@ -40,19 +42,45 @@ namespace Primeval.PlayerCharacter
         {
             base.OnUpdate();
 
-            Vector3 stanceTarget = Vector3.Lerp(cameraPivotTransform.localPosition, playerCharacter.stanceModule.isStanding ? standPivotTransform.localPosition : crouchPivotTransform.localPosition, Time.deltaTime * 10);
-            cameraPivotTransform.localPosition = stanceTarget;
+            Vector3 target = standPivotTransform.position;
 
-            Vector3 v = new Vector3(cameraPivotTransform.localEulerAngles.x, bodyTransform.localEulerAngles.y, 0);
+            if (playerCharacter.vitalityModule.isDead)
+            {
+                cameraPivotTransform.position = fpsPivotTransform.position;
+                cameraPivotTransform.rotation = fpsPivotTransform.rotation;
+            }
+            else
+            {
+                if (!canControl)
+                {
+                    cameraPivotTransform.localPosition = standPivotTransform.localPosition;
+                    cameraPivotTransform.localRotation = Quaternion.identity;
+                    return;
+                }
 
-            v.x -= Input.GetAxis("Mouse Y") * mouseSensitivity.y;
-            v.y += Input.GetAxis("Mouse X") * mouseSensitivity.x;
-            v.x = ClampAngle(v.x, -80, 80);
+                if (playerCharacter.stanceModule.isStanding)
+                {
+                    target = standPivotTransform.localPosition;
+                }
+                else
+                {
+                    target = crouchPivotTransform.localPosition;
+                }
 
-            cameraPivotTransform.localEulerAngles = Vector3.right * v.x;
-            bodyTransform.localEulerAngles = Vector3.up * v.y;
+                Vector3 stanceTarget = Vector3.Lerp(cameraPivotTransform.localPosition, target, Time.deltaTime * 10);
+                cameraPivotTransform.localPosition = stanceTarget;
 
-            normalizedAngle = Quaternion.Euler(cameraPivotTransform.eulerAngles) * Vector3.forward;
+                Vector3 v = new Vector3(cameraPivotTransform.localEulerAngles.x, bodyTransform.localEulerAngles.y, 0);
+
+                v.x -= Input.GetAxis("Mouse Y") * mouseSensitivity.y;
+                v.y += Input.GetAxis("Mouse X") * mouseSensitivity.x;
+                v.x = ClampAngle(v.x, -80, 80);
+
+                cameraPivotTransform.localEulerAngles = Vector3.right * v.x;
+                bodyTransform.localEulerAngles = Vector3.up * v.y;
+
+                normalizedAngle = Quaternion.Euler(cameraPivotTransform.eulerAngles) * Vector3.forward;
+            }
         }
 
         float ClampAngle(float a, float min, float max)

@@ -96,7 +96,7 @@ namespace Primeval.PlayerCharacter
                 enableInput = false;
 
             movementModule.isActive = enableInput;
-            mouselookModule.isActive = enableInput;
+            mouselookModule.canControl = enableInput;
             stanceModule.isActive = enableInput;
             inventoryModule.isActive = enableInput;
         }
