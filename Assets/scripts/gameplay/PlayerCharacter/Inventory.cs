@@ -161,11 +161,11 @@ namespace Primeval.PlayerCharacter
         {
             //all: true-> drop all, or else, drop only half
             int count = all ? x.currentAmount : (x.currentAmount == 1 ? 1 : x.currentAmount / 2);
+            
             object[] data = new object[1] { SyncInventoryItem.ToSync(x) };
             Vector3 pos = playerCharacter.transform.position;
 
-            PhotonNetwork.InstantiateSceneObject(x.prefab, pos, Quaternion.identity, 0, data);
-
+            CmdDropItem(x.prefab, SyncInventoryItem.ToSync(x), pos);
             RemoveItem(x, count);
         }
 
@@ -332,6 +332,24 @@ namespace Primeval.PlayerCharacter
             {
                 itemList = SyncInventoryItem.FromSyncList(i, allItemData.ToArray());
                 CalculateFuelCount();
+            }
+        }
+
+        
+
+        //[Command]
+        public void CmdDropItem(string n, SyncInventoryItem d, Vector3 p)
+        {
+            photonView.RPC("RpcDropItem", PhotonTargets.All, n, d, p);
+        }
+
+        [PunRPC]
+        public void RpcDropItem(string n, SyncInventoryItem d, Vector3 p)
+        {
+            if (PhotonNetwork.isMasterClient)
+            {
+                print("master client drop item: " + PhotonNetwork.isMasterClient);
+                PhotonNetwork.InstantiateSceneObject(n, p, Quaternion.identity, 0, new object[1]{d});
             }
         }
     }
