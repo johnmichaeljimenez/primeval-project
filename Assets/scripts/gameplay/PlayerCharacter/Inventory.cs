@@ -62,7 +62,7 @@ namespace Primeval.PlayerCharacter
 
         public void KeyBindingEvents()
         {
-            for (int i = itemList.Count - 1; i >= 0 ; i--)
+            for (int i = itemList.Count - 1; i >= 0; i--)
             {
                 InventoryItem n = itemList[i];
 
@@ -108,7 +108,7 @@ namespace Primeval.PlayerCharacter
                     // left = n;
 
 
-                    int cap = (lastItem.data.maxStackAmount-lastItem.currentAmount);
+                    int cap = (lastItem.data.maxStackAmount - lastItem.currentAmount);
                     diff = Mathf.Min(cap, left);
                     lastItem.currentAmount += diff;
 
@@ -155,6 +155,18 @@ namespace Primeval.PlayerCharacter
                     break;
                 }
             }
+        }
+
+        public void DropItem(InventoryItem x, bool all = true)
+        {
+            //all: true-> drop all, or else, drop only half
+            int count = all ? x.currentAmount : (x.currentAmount == 1 ? 1 : x.currentAmount / 2);
+            object[] data = new object[1] { SyncInventoryItem.ToSync(x) };
+            Vector3 pos = playerCharacter.transform.position;
+
+            PhotonNetwork.InstantiateSceneObject(x.prefab, pos, Quaternion.identity, 0, data);
+
+            RemoveItem(x, count);
         }
 
         public void RemoveItem(InventoryItem x, int amount = 1)
@@ -237,7 +249,9 @@ namespace Primeval.PlayerCharacter
             {
                 playerCharacter.itemEffectsModule.AddEffect((AidData)i.data);
                 RemoveItem(i, 1);
-            }else{
+            }
+            else
+            {
                 if (i.data.canBeEquipped)
                     EquipItem(index);
             }

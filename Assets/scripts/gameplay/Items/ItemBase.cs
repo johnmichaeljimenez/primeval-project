@@ -16,10 +16,21 @@ namespace Primeval.Item
 
         Rigidbody rigidbody;
 
+        SyncInventoryItem pastData;
+
         void Start()
         {
+            if (photonView.instantiationData != null && photonView.instantiationData.Length > 0)
+                pastData = (SyncInventoryItem)(photonView.instantiationData[0]);
+
             currentAmount = itemData.amount;
             maxAmount = itemData.amount;
+
+            if (pastData != null)
+            {
+                currentAmount = pastData.amount;
+            }
+
 
             if (photonView.isMine)
             {
@@ -82,11 +93,15 @@ namespace Primeval.Item
                 player.audioPlayerModule.PlaySound(player.inventoryModule.addItemClip, true);
 
                 InventoryItem i = new InventoryItem();
+                i.prefab = itemData.itemName;
                 i.data = itemData;
                 i.currentAmount = passedAmount;
                 if (itemData.itemType == ItemTypes.Weapon)
                 {
-                    i.currentAmmo = ((WeaponData)itemData).ammo1Capacity;
+                    if (pastData != null)
+                        i.currentAmmo = pastData.currentAmmo;
+                    else
+                        i.currentAmmo = ((WeaponData)itemData).ammo1Capacity;
                 }
                 i.owner = player;
                 player.inventoryModule.AddItem(i);
@@ -97,7 +112,7 @@ namespace Primeval.Item
 
         void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            
+
         }
     }
 

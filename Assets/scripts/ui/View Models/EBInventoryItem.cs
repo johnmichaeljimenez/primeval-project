@@ -11,6 +11,6 @@ public class EBInventoryItem : MonoBehaviour
     [Binding]
     public void ClickItem()
     {
-        PlayerCharacter.myPlayer.inventoryModule.UseItem(transform.GetSiblingIndex());
+        PlayerCharacter.myPlayer.inventoryModule.DropItem(PlayerCharacter.myPlayer.inventoryModule.itemList[transform.GetSiblingIndex()]);
     }
 }

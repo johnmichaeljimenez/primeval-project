@@ -11,6 +11,8 @@ namespace Primeval.PlayerCharacter
     [System.Serializable]
     public class InventoryItem
     {
+        [HideInInspector]
+        public string prefab;
         public ItemBaseData data;
         public int currentAmount;
         public PlayerCharacter owner;
