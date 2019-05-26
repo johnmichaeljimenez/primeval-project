@@ -122,13 +122,10 @@ namespace Primeval.PlayerCharacter
 
                 float y = playerCharacter.movementModule.inputDirection.z;
 
-                float mx = playerCharacter.movementModule.inputDirection.x;
-                float my = y + (y > 0 ? playerCharacter.movementModule.runDelay : 0);
-                int st = (int)playerCharacter.stanceModule.currentStance;
-                bool oa = playerCharacter.movementModule.isGrounded;
-                float lx = 0;
-                float ly = 0;
-                
+                movementX = playerCharacter.movementModule.inputDirection.x;
+                movementY = y + (y > 0 ? playerCharacter.movementModule.runDelay : 0);
+                stance = (int)playerCharacter.stanceModule.currentStance;
+                onAir = !playerCharacter.movementModule.isGrounded;
                 if (playerCharacter.inventoryFPSModelModule.activeModel)
                 {
                     currentWeaponTPS = playerCharacter.inventoryFPSModelModule.activeModel.transform.GetSiblingIndex()+1;
@@ -137,10 +134,8 @@ namespace Primeval.PlayerCharacter
                     currentWeaponTPS = 0;
                 }
 
-                lx = 0;//playerCharacter.mouselookModule.normalizedAngle.x;
-                ly = playerCharacter.mouselookModule.normalizedAngle.y;
-
-                CmdAnimate(mx, my, st, currentWeaponTPS, oa, lx, ly, currentWeaponTPS);
+                lookX = 0;
+                lookY = playerCharacter.mouselookModule.normalizedAngle.y;
             }
         }
 
@@ -157,7 +152,12 @@ namespace Primeval.PlayerCharacter
                     h = i.leftHandHandle;
             }
 
-            playerHandIK.SetIKHand(currentWeaponTPS > 0, h);
+            bool hasWeapon = currentWeaponTPS > 0;
+
+            playerHandIK.SetIKHand(hasWeapon, h);
+            animator.SetLayerWeight(1, hasWeapon? 1 : 0);
+            animator.SetLayerWeight(2, hasWeapon? 1 : 0);
+            animator.SetLayerWeight(3, hasWeapon? 1 : 0);
         }
 
         //[Command]
@@ -165,6 +165,30 @@ namespace Primeval.PlayerCharacter
         {
             // RpcAnimate(mx, my, st, wp, oa, lx, ly, w);
             photonView.RPC("RpcAnimate", PhotonTargets.All, mx, my, st, wp, oa, lx, ly, w);
+        }
+
+        
+        void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.isWriting)
+            {
+                stream.SendNext(new Vector2(movementX, movementY));
+                stream.SendNext(stance);
+                stream.SendNext(onAir);
+                stream.SendNext(new Vector2(lookX, lookY));
+                stream.SendNext(currentWeaponTPS);
+            }else{
+                Vector2 m = (Vector2)stream.ReceiveNext();
+                stance = (int)stream.ReceiveNext();
+                onAir = (bool)stream.ReceiveNext();
+                Vector2 l = (Vector2)stream.ReceiveNext();
+                currentWeaponTPS = (int)stream.ReceiveNext();
+
+                movementX = m.x;
+                movementY = m.y;
+                lookX = l.x;
+                lookY = l.y;
+            }
         }
 
         [PunRPC]
