@@ -45,7 +45,7 @@ namespace Primeval.ViewModels
             int mm, ss;
             mm = ct / 60;
             ss = ct % 60;
-            Text = mm.ToString().PadLeft(2, '0') + ":" + ss.ToString().PadLeft(2, '0') + ds.Substring(ds.IndexOf("."));
+            Text = mm.Padded()+ ":" + ss.Padded() + ds.Substring(ds.IndexOf("."));
         }
 
         private void OnPropertyChanged(string propertyName)

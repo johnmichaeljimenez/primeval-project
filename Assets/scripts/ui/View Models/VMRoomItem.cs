@@ -17,11 +17,22 @@ namespace Primeval.ViewModels
             get;
             private set;
         }
+        
+        public string playerCount;
 
-        public VMRoomItem(string t)
+        [Binding]
+        public string PlayerCount
+        {
+            get;
+            private set;
+        }
+
+        public VMRoomItem(string t, int pc, int pc2)
         {
             displayText = t;
             this.DisplayText = displayText;
+
+            playerCount = pc.Padded() + "/" + pc2.Padded();
         }
     }
 

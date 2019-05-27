@@ -7,6 +7,10 @@ using System.IO;
 
 public static class Utils
 {
+    public static string Padded(this int x, int count = 2)
+    {
+        return x.ToString().PadLeft(count, '0');
+    }
 
     public static string StringFromBytes(byte[] b)
     {

@@ -1026,6 +1026,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209733414}
   m_CullTransparentMesh: 0
+--- !u!1 &231014923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231014925}
+  - component: {fileID: 231014924}
+  m_Layer: 0
+  m_Name: Root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &231014924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231014923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d49bcc7e0523d4cbbfd998d54280ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 0
+--- !u!4 &231014925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231014923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 805.11096, y: 299.9247, z: -542.1127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 816631514}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275837521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,8 +1968,8 @@ RectTransform:
   - {fileID: 898257254}
   - {fileID: 783774538}
   - {fileID: 859869205}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 231014925}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2814,7 +2859,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7807847696098035492}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7807847696098035495}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -4965,6 +5010,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 822dac7c5d468604d82f1aeaba11813e, type: 3}
+--- !u!1 &5777474743909168494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5777474744013531315, guid: 822dac7c5d468604d82f1aeaba11813e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5777474743909168493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5777474743909168495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5777474743909168494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c907d248ac66a341b95f1f58d6bc8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelPropertyName: Primeval.ViewModels.VMRoom.Items
+  templatesRoot: {fileID: 7807847696098035493}
 --- !u!1001 &6130073909645635640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5352,3 +5417,44 @@ PrefabInstance:
       objectReference: {fileID: 1313716543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02cc224d9919826408351ded9a74f1ac, type: 3}
+--- !u!1 &7807847696098035493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7807847696037923796, guid: 02cc224d9919826408351ded9a74f1ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7807847696098035492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7807847696098035494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807847696098035493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fbe316db38e1b48a273eac0c26fe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelTypeName: Primeval.ViewModels.VMRoomItem
+--- !u!1 &7807847696098035495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7807847697335664153, guid: 02cc224d9919826408351ded9a74f1ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 7807847696098035492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7807847696098035496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807847696098035495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: 
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: Primeval.ViewModels.VMRoomItem.DisplayText
+  viewPropertyName: TMPro.TextMeshProUGUI.text
