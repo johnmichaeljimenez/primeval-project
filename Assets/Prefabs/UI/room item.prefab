@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 7807847696037923793}
   - component: {fileID: 7807847696037923792}
   - component: {fileID: 7807847696037923799}
+  - component: {fileID: 7807847696098035494}
+  - component: {fileID: 2220022630104479256}
+  - component: {fileID: 1838037770673265488}
   m_Layer: 5
   m_Name: room item
   m_TagString: Untagged
@@ -143,6 +146,45 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7807847696098035494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807847696037923796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fbe316db38e1b48a273eac0c26fe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelTypeName: Primeval.ViewModels.VMRoomItem
+--- !u!114 &2220022630104479256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807847696037923796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d570b9e2dddbb4d911898e2ccf7de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1838037770673265488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807847696037923796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9073289c7daa4449c6f754f7771742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelMethodName: EBRoomItem.ClickItem
+  viewEventName: UnityEngine.UI.Button.onClick
 --- !u!1 &7807847696321849737
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +371,7 @@ GameObject:
   - component: {fileID: 7807847697335664154}
   - component: {fileID: 7807847697335664228}
   - component: {fileID: 7807847697335664155}
+  - component: {fileID: 7807847696098035496}
   m_Layer: 5
   m_Name: room name
   m_TagString: Untagged
@@ -452,7 +495,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 4, y: 4, z: 4, w: 4}
   m_textInfo:
-    textComponent: {fileID: 0}
+    textComponent: {fileID: 7807847697335664155}
     characterCount: 9
     spriteCount: 0
     spaceCount: 1
@@ -476,3 +519,19 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7807847696098035496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807847697335664153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: 
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: Primeval.ViewModels.VMRoomItem.DisplayText
+  viewPropertyName: TMPro.TextMeshProUGUI.text

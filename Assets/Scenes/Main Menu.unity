@@ -1838,18 +1838,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1313716543 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7807847697335664155, guid: 02cc224d9919826408351ded9a74f1ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 7807847696098035492}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7807847696098035495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1365060251 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5777474742544113654, guid: 822dac7c5d468604d82f1aeaba11813e,
@@ -3881,11 +3869,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7807847697335664155, guid: 02cc224d9919826408351ded9a74f1ac,
-        type: 3}
-      propertyPath: m_textInfo.textComponent
-      value: 
-      objectReference: {fileID: 1313716543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02cc224d9919826408351ded9a74f1ac, type: 3}
 --- !u!1 &7807847696098035493 stripped
@@ -3894,38 +3877,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7807847696098035492}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7807847696098035494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7807847696098035493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14fbe316db38e1b48a273eac0c26fe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewModelTypeName: Primeval.ViewModels.VMRoomItem
---- !u!1 &7807847696098035495 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7807847697335664153, guid: 02cc224d9919826408351ded9a74f1ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 7807847696098035492}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7807847696098035496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7807847696098035495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewAdapterTypeName: 
-  viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: Primeval.ViewModels.VMRoomItem.DisplayText
-  viewPropertyName: TMPro.TextMeshProUGUI.text

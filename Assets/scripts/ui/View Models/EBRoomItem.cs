@@ -11,6 +11,7 @@ public class EBRoomItem : MonoBehaviour
     [Binding]
     public void ClickItem()
     {
+        print("joining room");
         //TODO: join room
         VMRoomItem v =  (VMRoomItem)GetComponent<Template>().GetViewModel();
         NetworkManagerExt.JoinRoom(v.RoomName);
