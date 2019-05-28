@@ -7,7 +7,7 @@ using Primeval.PlayerCharacter;
 
 public class GameManager : GenericSingletonClass<GameManager>
 {
-
+    public bool inGame;
     public string t;
     public static float gameTime;
 
