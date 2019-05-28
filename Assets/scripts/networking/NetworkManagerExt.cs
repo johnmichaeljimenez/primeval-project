@@ -19,6 +19,8 @@ namespace Primeval.Networking
             }
         }
 
+        static bool connected;
+
         void Awake()
         {
             base.Awake();
@@ -28,6 +30,7 @@ namespace Primeval.Networking
 
         public void Connect()
         {
+            connected = false;
             UIManager.ShowLoading(true);
             print("connecting");
             PhotonNetwork.ConnectUsingSettings("v0.0.1");
@@ -35,6 +38,7 @@ namespace Primeval.Networking
 
         void OnJoinedLobby()
         {
+            connected = true;
             UIManager.ShowLoading(false);
             print("joined");
             // PhotonNetwork.JoinRandomRoom();
@@ -42,18 +46,22 @@ namespace Primeval.Networking
 
         void OnFailedToConnectToPhoton(DisconnectCause cause)
         {
+            connected = false;
             print("failed");
             UIManager.ShowLoading(false);
             UIManager.ShowMessage(cause.ToString(), "ERROR", Connect, true, null, "Reconnect");
         }
-        public virtual void OnDisconnectedFromPhoton()
+        void OnConnectionFail(DisconnectCause cause)
         {
-            print("disconnected");
-            UIManager.ShowLoading(false);
-            UIManager.ShowMessage("You have been disconnected", "ERROR", Connect, true, null, "Reconnect");
+            if (connected)
+            {
+                print("disconnected");
+                UIManager.ShowLoading(false);
+                UIManager.ShowMessage("You have been disconnected", "ERROR", Connect, true, null, "Reconnect");
+            }
         }
 
-        public virtual void OnReceivedRoomListUpdate()
+        void OnReceivedRoomListUpdate()
         {
         }
 
