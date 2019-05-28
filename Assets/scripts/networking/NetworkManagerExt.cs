@@ -81,10 +81,9 @@ namespace Primeval.Networking
         void OnJoinedRoom()
         {
             print("room");
-
-            PhotonNetwork.Instantiate("Player Character", Vector3.zero, Quaternion.identity, 0);
-            if (PhotonNetwork.isMasterClient)
-                OnStartLevel();
+            // PhotonNetwork.Instantiate("Player Character", Vector3.zero, Quaternion.identity, 0);
+            // if (PhotonNetwork.isMasterClient)
+            //     OnStartLevel();
         }
 
 
@@ -99,6 +98,7 @@ namespace Primeval.Networking
             options.MaxPlayers = 5;
             options.IsOpen = true;
             PhotonNetwork.CreateRoom("test", options, null);
+            UIManager.ShowLoading(true);
         }
     }
 }
