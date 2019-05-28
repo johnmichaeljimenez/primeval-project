@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityWeld.Binding;
 
+[Binding]
 public class UIManager : GenericSingletonClass<UIManager>
 {
     public MessageDialog messageDialog;
@@ -24,5 +26,11 @@ public class UIManager : GenericSingletonClass<UIManager>
     public static void ShowMessage(string content, string caption = "", UnityAction okAction = null, bool okOnly = true, UnityAction cancelAction = null, string okName = "OK", string cancelName = "Cancel")
     {
         instance.messageDialog.Show(content, caption, okAction, okOnly, cancelAction, okName, cancelName);
+    }
+
+    [Binding]
+    public void CreateRoom()
+    {
+        Primeval.Networking.NetworkManagerExt.instance.CreateRoom();
     }
 }

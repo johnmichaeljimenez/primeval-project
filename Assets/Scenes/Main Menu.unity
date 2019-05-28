@@ -834,6 +834,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275837521}
   m_CullTransparentMesh: 0
+--- !u!1 &479879363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3382588115380287034, guid: 0240f6a198ab773469a3114c44b79444,
+    type: 3}
+  m_PrefabInstance: {fileID: 864762237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &479879364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479879363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9073289c7daa4449c6f754f7771742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelMethodName: UIManager.CreateRoom
+  viewEventName: UnityEngine.UI.Button.onClick
 --- !u!1 &560929166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1595,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 864762237}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 479879363}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
