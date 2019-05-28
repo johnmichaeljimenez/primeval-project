@@ -21,9 +21,10 @@ namespace Primeval.Networking
 
         static bool connected;
 
-        void Awake()
+        public override void Initialize()
         {
             base.Awake();
+            GameManager.inGame = false;
             PhotonPeer.RegisterType(typeof(Primeval.PlayerCharacter.SyncInventoryItem), (byte)'I', Primeval.PlayerCharacter.SyncInventoryItem.Serialize, Primeval.PlayerCharacter.SyncInventoryItem.Deserialize);
             Connect();
         }
@@ -80,19 +81,15 @@ namespace Primeval.Networking
 
         void OnJoinedRoom()
         {
+            GameManager.inGame = false;
             UIManager.ShowLoading(false);
             print("room");
+            PhotonNetwork.LoadLevelAsync(1);
             // PhotonNetwork.Instantiate("Player Character", Vector3.zero, Quaternion.identity, 0);
             // if (PhotonNetwork.isMasterClient)
             //     OnStartLevel();
         }
 
-
-        public void OnStartLevel()
-        {
-            print("start level");
-            GameManager.instance.StartGame();
-        }
         public static void CreateRoom()
         {
             RoomOptions options = new RoomOptions();

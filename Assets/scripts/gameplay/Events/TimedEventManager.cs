@@ -11,7 +11,7 @@ namespace Primeval.Events
 
         void Awake()
         {
-            
+            base.Awake();
         }
 
         void Update()

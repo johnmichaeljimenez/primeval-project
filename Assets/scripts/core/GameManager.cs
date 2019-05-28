@@ -7,7 +7,7 @@ using Primeval.PlayerCharacter;
 
 public class GameManager : GenericSingletonClass<GameManager>
 {
-    public bool inGame;
+    public static bool inGame;
     public string t;
     public static float gameTime;
 
@@ -31,9 +31,15 @@ public class GameManager : GenericSingletonClass<GameManager>
         }
     }
 
-    public override void Awake()
+    public override void Initialize()
     {
         base.Awake();
+        
+        inGame = true;
+        if (PhotonNetwork.isMasterClient)
+            StartGame();
+            
+        PhotonNetwork.Instantiate("Player Character", Vector3.zero, Quaternion.identity, 0);
     }
 
     public void StartGame()

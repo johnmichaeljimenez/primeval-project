@@ -1,25 +1,60 @@
 ﻿using UnityEngine;
 
- public class GenericSingletonClass<Instance> : MonoBehaviour where Instance : GenericSingletonClass<Instance>
+public class GenericSingletonClass<T> : MonoBehaviour where T : GenericSingletonClass<T>
 {
-    public static Instance instance;
-     public bool isPersistant;
-     
-     public virtual void Awake() {
-         if(isPersistant) {
-             if(!instance) {
-                 instance = this as Instance;
-             }
-             else {
-                 Destroy(gameObject);
-             }
-             DontDestroyOnLoad(gameObject);
-            Initialize();
-         }
-         else {
-             instance = this as Instance;
-         }
-     }
+    private static T mInstance;
+    public static T instance
+    {
+        get
+        {
+            Find();
+            return mInstance;
+        }
+    }
+    public bool isPersistant;
 
-     public virtual void Initialize(){}
+    public static void Find()
+    {
+        if (mInstance == null)
+            {
+                mInstance = GameObject.FindObjectOfType<T>();
+                if (mInstance.isPersistant)
+                {
+                    T[] j = GameObject.FindObjectsOfType<T>();
+                    for (int i = j.Length - 1; i >= 0 ; i--)
+                    {
+                        if (j[i] != mInstance)
+                        {
+                            Destroy(j[i].gameObject);
+                        }
+                    }
+                }
+
+                mInstance.Initialize();
+                // if (instance.isPersistant)
+                // {
+                //     if (!instance)
+                //     {
+                //         instance = this as T;
+                //     }
+                //     else
+                //     {
+                //         Destroy(gameObject);
+                //     }
+                //     DontDestroyOnLoad(gameObject);
+                //     Initialize();
+                // }
+                // else
+                // {
+                //     instance = this as T;
+                // }
+            }
+    }
+
+    public virtual void Awake()
+    {
+        Find();
+    }
+
+    public virtual void Initialize() { }
 }
