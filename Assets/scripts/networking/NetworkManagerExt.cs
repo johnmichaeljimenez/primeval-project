@@ -21,6 +21,7 @@ namespace Primeval.Networking
 
         void Awake()
         {
+            base.Awake();
             PhotonPeer.RegisterType(typeof(Primeval.PlayerCharacter.SyncInventoryItem), (byte)'I', Primeval.PlayerCharacter.SyncInventoryItem.Serialize, Primeval.PlayerCharacter.SyncInventoryItem.Deserialize);
 
             print("connecting");
@@ -54,27 +55,5 @@ namespace Primeval.Networking
             print("start level");
             GameManager.instance.StartGame();
         }
-
-        // public override void OnClientConnect(NetworkConnection conn)
-        // {
-        //     print("OnClientConnect: " + conn.connectionId);
-        //     base.OnClientConnect(conn);
-        // }
-
-        // public override void OnClientDisconnect(NetworkConnection conn)
-        // {
-        //     print("OnClientDisconnect: " + conn.connectionId);
-        //     base.OnClientDisconnect(conn);
-        // }
-
-        // public override void OnServerAddPlayer(NetworkConnection conn, AddPlayerMessage extraMessage)
-        // {
-        //     base.OnServerAddPlayer(conn, extraMessage);
-        // }
-
-        // public override void OnClientError(NetworkConnection conn, int errorCode)
-        // {
-        //     base.OnClientError(conn, errorCode);
-        // }
     }
 }
