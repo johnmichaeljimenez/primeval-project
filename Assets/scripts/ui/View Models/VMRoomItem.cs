@@ -17,6 +17,14 @@ namespace Primeval.ViewModels
             get;
             private set;
         }
+        public string roomName;
+
+        [Binding]
+        public string RoomName
+        {
+            get;
+            private set;
+        }
         
         public string playerCount;
 
@@ -27,12 +35,16 @@ namespace Primeval.ViewModels
             private set;
         }
 
-        public VMRoomItem(string t, int pc, int pc2)
+        public VMRoomItem(string t, int pc, int pc2, string rn)
         {
             displayText = t;
             this.DisplayText = displayText;
 
             playerCount = pc.Padded() + "/" + pc2.Padded();
+            this.PlayerCount = playerCount;
+
+            roomName = rn;
+            this.RoomName = roomName;
         }
     }
 

@@ -67,7 +67,7 @@ namespace Primeval.Networking
             vmRoom.items.Clear();
             foreach (Room i in PhotonNetwork.GetRoomList())
             {
-                ViewModels.VMRoomItem vmRoomItem = new ViewModels.VMRoomItem(i.Name, i.PlayerCount, i.MaxPlayers);
+                ViewModels.VMRoomItem vmRoomItem = new ViewModels.VMRoomItem(i.Name, i.PlayerCount, i.MaxPlayers, i.Name);
                 vmRoom.items.Add(vmRoomItem);
             }
         }
@@ -80,6 +80,7 @@ namespace Primeval.Networking
 
         void OnJoinedRoom()
         {
+            UIManager.ShowLoading(false);
             print("room");
             // PhotonNetwork.Instantiate("Player Character", Vector3.zero, Quaternion.identity, 0);
             // if (PhotonNetwork.isMasterClient)
@@ -103,6 +104,7 @@ namespace Primeval.Networking
 
         public static void JoinRoom(string n)
         {
+            UIManager.ShowLoading(true);
             PhotonNetwork.JoinRoom(n);
         }
     }

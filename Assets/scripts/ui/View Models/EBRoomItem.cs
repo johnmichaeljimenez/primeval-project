@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityWeld.Binding;
-using Primeval.Data;
-using Primeval.PlayerCharacter;
+using Primeval.Networking;
+using Primeval.ViewModels;
 
 [Binding]
 public class EBRoomItem : MonoBehaviour
@@ -12,6 +12,8 @@ public class EBRoomItem : MonoBehaviour
     public void ClickItem()
     {
         //TODO: join room
+        VMRoomItem v =  (VMRoomItem)GetComponent<Template>().GetViewModel();
+        NetworkManagerExt.JoinRoom(v.RoomName);
         //PlayerCharacter.myPlayer.inventoryModule.UseItem(transform.GetSiblingIndex());
     }
 }
