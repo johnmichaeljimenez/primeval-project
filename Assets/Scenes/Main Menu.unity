@@ -4581,11 +4581,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MessageDialog
       objectReference: {fileID: 0}
-    - target: {fileID: 155308695043096324, guid: ac16ee4b663a67e4c9aba8086626df05,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 155308695043096325, guid: ac16ee4b663a67e4c9aba8086626df05,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4765,50 +4760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9758464a97c4e604492158790819b92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &155308694103328612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 155308695074055917, guid: ac16ee4b663a67e4c9aba8086626df05,
-    type: 3}
-  m_PrefabInstance: {fileID: 155308694103328610}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &155308694103328613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155308694103328612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewAdapterTypeName: 
-  viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: Primeval.ViewModels.VMMessageBox.Content
-  viewPropertyName: TMPro.TextMeshProUGUI.text
---- !u!1 &155308694103328614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 155308694162612349, guid: ac16ee4b663a67e4c9aba8086626df05,
-    type: 3}
-  m_PrefabInstance: {fileID: 155308694103328610}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &155308694103328615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155308694103328614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewAdapterTypeName: 
-  viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: Primeval.ViewModels.VMMessageBox.Caption
-  viewPropertyName: TMPro.TextMeshProUGUI.text
 --- !u!1001 &1210805530260397894
 PrefabInstance:
   m_ObjectHideFlags: 0

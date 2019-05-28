@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 155308694162612290}
   - component: {fileID: 155308694162612288}
   - component: {fileID: 155308694162612291}
+  - component: {fileID: 155308694103328615}
   m_Layer: 5
   m_Name: title
   m_TagString: Untagged
@@ -232,6 +233,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &155308694103328615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155308694162612349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: 
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: Primeval.ViewModels.VMMessageBox.Caption
+  viewPropertyName: TMPro.TextMeshProUGUI.text
 --- !u!1 &155308694802531282
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9758464a97c4e604492158790819b92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  okButton: {fileID: 155308695244550973}
+  cancelButton: {fileID: 3230938656877715828}
 --- !u!1 &155308695074055917
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +466,7 @@ GameObject:
   - component: {fileID: 155308695074055922}
   - component: {fileID: 155308695074055920}
   - component: {fileID: 155308695074055923}
+  - component: {fileID: 155308694103328613}
   m_Layer: 5
   m_Name: content
   m_TagString: Untagged
@@ -594,6 +614,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &155308694103328613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155308695074055917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fff9f3256f02d43b6065b078449891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: 
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: Primeval.ViewModels.VMMessageBox.Content
+  viewPropertyName: TMPro.TextMeshProUGUI.text
 --- !u!1001 &155308693338265418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -756,6 +792,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3230938656877715828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3382588115380287038, guid: 0240f6a198ab773469a3114c44b79444,
+    type: 3}
+  m_PrefabInstance: {fileID: 155308693338265418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3230938658184332547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,5 +964,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &155308695244550973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3382588115380287038, guid: 0240f6a198ab773469a3114c44b79444,
+    type: 3}
+  m_PrefabInstance: {fileID: 3230938658184332547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
