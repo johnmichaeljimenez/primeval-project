@@ -24,14 +24,31 @@ namespace Primeval.Networking
             base.Awake();
             PhotonPeer.RegisterType(typeof(Primeval.PlayerCharacter.SyncInventoryItem), (byte)'I', Primeval.PlayerCharacter.SyncInventoryItem.Serialize, Primeval.PlayerCharacter.SyncInventoryItem.Deserialize);
 
+            UIManager.ShowLoading(true);
             print("connecting");
             PhotonNetwork.ConnectUsingSettings("v0.0.1");
         }
 
         void OnJoinedLobby()
         {
+            UIManager.ShowLoading(false);
             print("joined");
-            PhotonNetwork.JoinRandomRoom();
+            // PhotonNetwork.JoinRandomRoom();
+        }
+
+        void OnFailedToConnectToPhoton(DisconnectCause cause)
+        {
+            UIManager.ShowLoading(false);
+            UIManager.ShowMessage("ERROR: " + cause.ToString());
+        }
+        public virtual void OnDisconnectedFromPhoton()
+        {
+            UIManager.ShowLoading(false);
+            UIManager.ShowMessage("Disconnected");
+        }
+        
+        public virtual void OnReceivedRoomListUpdate()
+        {
         }
 
         void OnPhotonRandomJoinFailed()
