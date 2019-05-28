@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 6130073910716769973}
   - component: {fileID: 6130073910716769975}
   - component: {fileID: 6130073910716769974}
+  - component: {fileID: 5775647650211497852}
   m_Layer: 5
   m_Name: Loading Dialog
   m_TagString: Untagged
@@ -119,3 +120,15 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5775647650211497852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130073910716769972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd1bb6edb6046d4aaf9b4c3d7513bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
