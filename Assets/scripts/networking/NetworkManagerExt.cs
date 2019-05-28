@@ -92,13 +92,18 @@ namespace Primeval.Networking
             print("start level");
             GameManager.instance.StartGame();
         }
-        public void CreateRoom()
+        public static void CreateRoom()
         {
             RoomOptions options = new RoomOptions();
             options.MaxPlayers = 5;
             options.IsOpen = true;
             PhotonNetwork.CreateRoom("test", options, null);
             UIManager.ShowLoading(true);
+        }
+
+        public static void JoinRoom(string n)
+        {
+            PhotonNetwork.JoinRoom(n);
         }
     }
 }

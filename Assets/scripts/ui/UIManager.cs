@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityWeld.Binding;
+using Primeval.Networking;
 
 [Binding]
 public class UIManager : GenericSingletonClass<UIManager>
@@ -31,6 +32,6 @@ public class UIManager : GenericSingletonClass<UIManager>
     [Binding]
     public void CreateRoom()
     {
-        Primeval.Networking.NetworkManagerExt.instance.CreateRoom();
+        NetworkManagerExt.CreateRoom();
     }
 }
