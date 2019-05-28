@@ -42,11 +42,13 @@ namespace Primeval.Networking
 
         void OnFailedToConnectToPhoton(DisconnectCause cause)
         {
+            print("failed");
             UIManager.ShowLoading(false);
             UIManager.ShowMessage(cause.ToString(), "ERROR", Connect, true, null, "Reconnect");
         }
         public virtual void OnDisconnectedFromPhoton()
         {
+            print("disconnected");
             UIManager.ShowLoading(false);
             UIManager.ShowMessage("You have been disconnected", "ERROR", Connect, true, null, "Reconnect");
         }

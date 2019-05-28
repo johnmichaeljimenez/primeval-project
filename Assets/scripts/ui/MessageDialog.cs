@@ -23,14 +23,14 @@ public class MessageDialog : MonoBehaviour
         cancelButton.gameObject.SetActive(!okOnly);
         if (!okOnly)
         {
+            cancelButton.onClick.AddListener(Hide);
             if (cancelAction != null)
                 cancelButton.onClick.AddListener(cancelAction);
-            cancelButton.onClick.AddListener(Hide);
         }
 
+        okButton.onClick.AddListener(Hide);
         if (okAction != null)
             okButton.onClick.AddListener(okAction);
-        okButton.onClick.AddListener(Hide);
 
         gameObject.SetActive(true);
     }
