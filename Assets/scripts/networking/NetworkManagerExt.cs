@@ -65,7 +65,7 @@ namespace Primeval.Networking
         {
             ViewModels.VMRoom vmRoom = ViewModels.VMRoom.instance;
             vmRoom.items.Clear();
-            foreach (Room i in PhotonNetwork.GetRoomList())
+            foreach (RoomInfo i in PhotonNetwork.GetRoomList())
             {
                 ViewModels.VMRoomItem vmRoomItem = new ViewModels.VMRoomItem(i.Name, i.PlayerCount, i.MaxPlayers, i.Name);
                 vmRoom.items.Add(vmRoomItem);
