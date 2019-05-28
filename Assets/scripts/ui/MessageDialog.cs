@@ -8,11 +8,14 @@ using Primeval.ViewModels;
 public class MessageDialog : MonoBehaviour
 {
     public Button okButton, cancelButton;
-    public void Show(string content, string caption = "", UnityAction okAction = null, bool okOnly = true, UnityAction cancelAction = null)
+    public void Show(string content, string caption = "", UnityAction okAction = null, bool okOnly = true, UnityAction cancelAction = null, string okName = "OK", string cancelName = "Cancel")
     {
         VMMessageBox vm = GetComponent<VMMessageBox>();
         vm.Content = content;
         vm.Caption = caption;
+
+        okButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = okName;
+        cancelButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = cancelName;
 
         okButton.onClick.RemoveAllListeners();
         cancelButton.onClick.RemoveAllListeners();

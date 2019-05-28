@@ -21,8 +21,8 @@ public class UIManager : GenericSingletonClass<UIManager>
             instance.loadingDialog.Hide();
     }
 
-    public static void ShowMessage(string content, string caption = "", UnityAction okAction = null, bool okOnly = true, UnityAction cancelAction = null)
+    public static void ShowMessage(string content, string caption = "", UnityAction okAction = null, bool okOnly = true, UnityAction cancelAction = null, string okName = "OK", string cancelName = "Cancel")
     {
-        instance.messageDialog.Show(content, caption, okAction, okOnly, cancelAction);
+        instance.messageDialog.Show(content, caption, okAction, okOnly, cancelAction, okName, cancelName);
     }
 }

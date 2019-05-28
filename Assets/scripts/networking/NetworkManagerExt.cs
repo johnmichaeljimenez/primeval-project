@@ -23,7 +23,11 @@ namespace Primeval.Networking
         {
             base.Awake();
             PhotonPeer.RegisterType(typeof(Primeval.PlayerCharacter.SyncInventoryItem), (byte)'I', Primeval.PlayerCharacter.SyncInventoryItem.Serialize, Primeval.PlayerCharacter.SyncInventoryItem.Deserialize);
+            Connect();
+        }
 
+        public void Connect()
+        {
             UIManager.ShowLoading(true);
             print("connecting");
             PhotonNetwork.ConnectUsingSettings("v0.0.1");
@@ -39,14 +43,14 @@ namespace Primeval.Networking
         void OnFailedToConnectToPhoton(DisconnectCause cause)
         {
             UIManager.ShowLoading(false);
-            UIManager.ShowMessage("ERROR: " + cause.ToString());
+            UIManager.ShowMessage(cause.ToString(), "ERROR", Connect, true, null, "Reconnect");
         }
         public virtual void OnDisconnectedFromPhoton()
         {
             UIManager.ShowLoading(false);
-            UIManager.ShowMessage("Disconnected");
+            UIManager.ShowMessage("You have been disconnected", "ERROR", Connect, true, null, "Reconnect");
         }
-        
+
         public virtual void OnReceivedRoomListUpdate()
         {
         }
