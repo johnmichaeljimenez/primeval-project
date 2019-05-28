@@ -63,6 +63,13 @@ namespace Primeval.Networking
 
         void OnReceivedRoomListUpdate()
         {
+            ViewModels.VMRoom vmRoom = ViewModels.VMRoom.instance;
+            vmRoom.items.Clear();
+            foreach (Room i in PhotonNetwork.GetRoomList())
+            {
+                ViewModels.VMRoomItem vmRoomItem = new ViewModels.VMRoomItem(i.Name, i.PlayerCount, i.MaxPlayers);
+                vmRoom.items.Add(vmRoomItem);
+            }
         }
 
         void OnPhotonRandomJoinFailed()
